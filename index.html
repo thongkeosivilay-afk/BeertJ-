@@ -10,15 +10,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="grid-overlay"></div>
 
-<nav>
+<nav class="glass">
   <div class="logo"><div class="logo-mark"></div>Figger<span>Shop</span></div>
   <ul class="nav-links">
     <li><a href="#categories">ເກມທັງໝົດ</a></li>
     <li><a href="#listings">ໄອດີແນະນຳ</a></li>
-    <li><a href="#how">ວິທີຊື້-ຂາຍ</a></li>
-    <li><a href="#trust">ຄວາມປອດໄພ</a></li>
   </ul>
   <div class="nav-cta">
     <button class="btn btn-ghost">ເຂົ້າສູ່ລະບົບ</button>
@@ -27,81 +24,78 @@
 </nav>
 
 <section class="hero">
-  <div>
-    <div class="eyebrow">ລະບົບກວດສອບໄອດີ Real-time</div>
-    <h1>ຊື້-ຂາຍໄອດີເກມ<br>ໂດຍບໍ່ຕ້ອງ<span class="accent">ຢ້ານຖືກໂກງ</span></h1>
-    <p class="lead">ທຸກໄອດີຜ່ານການກວດສອບ ແລະ ໃຊ້ລະບົບພັກເງິນກາງ (Escrow) ເງິນຂອງທ່ານຈະຖືກໂອນໃຫ້ຜູ້ຂາຍກໍ່ຕໍ່ເມື່ອທ່ານຢືນຢັນວ່າໄດ້ຮັບໄອດີແລ້ວເທົ່ານັ້ນ</p>
-    <div class="hero-cta">
-      <button class="btn btn-solid btn-lg">ເລີ່ມເລືອກໄອດີ</button>
-      <button class="btn btn-ghost btn-lg">ເບິ່ງວິທີການເຮັດວຽກ</button>
-    </div>
+  <div class="eyebrow glass">ລະບົບກວດສອບໄອດີ Real-time</div>
+  <h1>ຊື້-ຂາຍໄອດີເກມ<br>ໂດຍບໍ່ຕ້ອງ<span class="accent">ຢ້ານຖືກໂກງ</span></h1>
+  <p class="lead">ທຸກໄອດີຜ່ານການກວດສອບ ແລະ ໃຊ້ລະບົບພັກເງິນກາງ (Escrow) ເງິນຂອງທ່ານຈະຖືກໂອນໃຫ້ຜູ້ຂາຍກໍ່ຕໍ່ເມື່ອທ່ານຢືນຢັນວ່າໄດ້ຮັບໄອດີແລ້ວເທົ່ານັ້ນ</p>
+  <div class="hero-cta">
+    <button class="btn btn-solid btn-lg">ເລີ່ມເລືອກໄອດີ</button>
+    <button class="btn btn-ghost btn-lg glass">ເບິ່ງວິທີການເຮັດວຽກ</button>
   </div>
 </section>
 
+<div class="stats-row">
+  <div class="stat glass">
+    <div class="s-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.2 17.5L20 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="s-num">12,480</div>
+    <div class="s-label">ຂາຍແລ້ວ</div>
+  </div>
+  <div class="stat glass">
+    <div class="s-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="2"/></svg></div>
+    <div class="s-num">1,240</div>
+    <div class="s-label">ສິນຄ້າ</div>
+  </div>
+  <div class="stat glass">
+    <div class="s-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M4.8 20C5.6 16 8.4 13.8 12 13.8C15.6 13.8 18.4 16 19.2 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+    <div class="s-num">34,900</div>
+    <div class="s-label">ຜູ້ໃຊ້ງານ</div>
+  </div>
+  <div class="stat glass">
+    <div class="s-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 8.2L12 4L20.5 8.2L12 12.4L3.5 8.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M3.5 8.2V16L12 20.2M20.5 8.2V16L12 20.2M12 12.4V20.2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+    <div class="s-num">8,760</div>
+    <div class="s-label">ຄັງສິນຄ້າ</div>
+  </div>
+</div>
+
 <section id="categories">
-  <div class="sec-head reveal">
-    <div>
-      <span class="sec-tag">Browse</span>
-      <h2>ເລືອກຕາມເກມທີ່ຫຼິ້ນ</h2>
-    </div>
+  <div class="sec-head">
+    <div><span class="sec-tag">Browse</span><h2>ເລືອກຕາມເກມທີ່ຫຼິ້ນ</h2></div>
     <p>ລວມໄອດີຈາກເກມທີ່ນິຍົມ ອັບເດດສະຕ໋ອກໃໝ່ທຸກມື້ ຄັດກອງແລ້ວວ່າບໍ່ແມ່ນໄອດີປອມ ຫຼື ໄອດີຖືກແຮັກ</p>
   </div>
-  <div class="cat-grid reveal">
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>Valorant</b><span>3,204 ໄອດີ</span></div>
-    </div>
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>RoV</b><span>1,880 ໄອດີ</span></div>
-    </div>
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>Free Fire</b><span>5,102 ໄອດີ</span></div>
-    </div>
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>Genshin Impact</b><span>2,441 ໄອດີ</span></div>
-    </div>
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>PUBG Mobile</b><span>1,675 ໄອດີ</span></div>
-    </div>
-    <div class="cat-card" style="background-image:url('');">
-      <div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <div><b>Mobile Legends</b><span>2,930 ໄອດີ</span></div>
-    </div>
+  <div class="cat-grid">
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>Valorant</b><span>3,204 ໄອດີ</span></div></div>
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>RoV</b><span>1,880 ໄອດີ</span></div></div>
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>Free Fire</b><span>5,102 ໄອດີ</span></div></div>
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>Genshin Impact</b><span>2,441 ໄອດີ</span></div></div>
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>PUBG Mobile</b><span>1,675 ໄອດີ</span></div></div>
+    <div class="cat-card glass"><div class="cat-glyph"><svg viewBox="0 0 24 24" fill="none"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2" stroke="currentColor" stroke-width="1.6"/><line x1="6.5" y1="17.3" x2="17.5" y2="17.3" stroke="currentColor" stroke-width="1.6"/><line x1="10.6" y1="19.8" x2="13.4" y2="19.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div><b>Mobile Legends</b><span>2,930 ໄອດີ</span></div></div>
   </div>
 </section>
 
 <section id="listings">
-  <div class="sec-head reveal">
-    <div>
-      <span class="sec-tag">Featured</span>
-      <h2>ໄອດີແນະນຳມື້ນີ້</h2>
-    </div>
+  <div class="sec-head">
+    <div><span class="sec-tag">Featured</span><h2>ໄອດີແນະນຳມື້ນີ້</h2></div>
     <p>ຄັດມາໃຫ້ແລ້ວຈາກຜູ້ຂາຍທີ່ມີເລດຕິ້ງສູງ ແລະ ຜ່ານການຢືນຢັນຕົວຕົນ</p>
   </div>
-  <div class="listing-grid reveal">
-    <div class="l-card">
+  <div class="listing-grid">
+    <div class="l-card glass">
       <div class="l-thumb" style="background:linear-gradient(135deg,#274877,#0e1a33);"><span class="l-badge">VALORANT</span><b>IMMORTAL</b></div>
       <div class="l-title">ສະກິນຄົບ Elderflame + Reaver</div>
       <div class="l-meta">ເມວແທ້ · ເອເຈັນ 24 ໂຕ · ກຽດຕິຍົດ 3</div>
       <div class="l-foot"><div class="l-price">ກີບ6,590<span>ກີບ7,900</span></div><div class="l-buy">ເບິ່ງໄອດີ</div></div>
     </div>
-    <div class="l-card">
+    <div class="l-card glass">
       <div class="l-thumb" style="background:linear-gradient(135deg,#3a2f66,#12142c);"><span class="l-badge">GENSHIN</span><b>AR 60</b></div>
       <div class="l-title">Zhongli + Furina C6 ພ້ອມ</div>
       <div class="l-meta">ໂຕລະຄອນ 5★ 18 ໂຕ · ຕົ້ນທາງ Asia</div>
       <div class="l-foot"><div class="l-price">ກີບ3,190<span>ກີບ3,800</span></div><div class="l-buy">ເບິ່ງໄອດີ</div></div>
     </div>
-    <div class="l-card">
+    <div class="l-card glass">
       <div class="l-thumb" style="background:linear-gradient(135deg,#1f4a3d,#0e1a1a);"><span class="l-badge">ROV</span><b>ຕຳນານ V</b></div>
       <div class="l-title">ວີລະບຸລຸດຄົບ 126 ໂຕ ສະກິນ SS 9</div>
       <div class="l-meta">ເພັດຄົງເຫຼືອ 2,400 · ຜູກ Facebook</div>
       <div class="l-foot"><div class="l-price">ກີບ2,450<span>ກີບ2,990</span></div><div class="l-buy">ເບິ່ງໄອດີ</div></div>
     </div>
-    <div class="l-card">
+    <div class="l-card glass">
       <div class="l-thumb" style="background:linear-gradient(135deg,#4a2f2f,#1a0e0e);"><span class="l-badge">FREE FIRE</span><b>Heroic</b></div>
       <div class="l-title">ບັນເດີລຫາຍາກ + ສັດລ້ຽງເຕັມ</div>
       <div class="l-meta">ເພັດສະສົມ 5,800 · ເກມມາສເຕີ 3 ເກມ</div>
@@ -110,49 +104,5 @@
   </div>
 </section>
 
-<section id="how">
-  <div class="sec-head reveal">
-    <div>
-      <span class="sec-tag">Process</span>
-      <h2>ຊື້ໄອດີໃນ 3 ຂັ້ນຕອນ</h2>
-    </div>
-  </div>
-  <div class="steps reveal">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>ເລືອກໄອດີທີ່ແມ່ນ</h3>
-      <p>ກັ່ນຕອງຕາມເກມ ແຣັງ ສະກິນ ແລະ ງົບປະມານ ທຸກໄອດີມີລາຍລະອຽດຄົບກ່ອນຕັດສິນໃຈຊື້</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>ຊຳລະເງິນເຂົ້າລະບົບ Escrow</h3>
-      <p>ເງິນຂອງທ່ານຈະຖືກພັກໄວ້ກັບ Figger Shop ບໍ່ເຖິງມືຜູ້ຂາຍຈົນກວ່າທ່ານຈະຢືນຢັນວ່າໄດ້ຮັບໄອດີຮຽບຮ້ອຍ</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>ຮັບໄອດີ ແລະ ຢືນຢັນ</h3>
-      <p>ຮັບຂໍ້ມູນໄອດີທັນທີ ລອງເຂົ້າຫຼິ້ນ ແລ້ວກົດຢືນຢັນເພື່ອປ່ອຍເງິນໃຫ້ຜູ້ຂາຍ ປິດຈົບພາຍໃນບໍ່ຈັກນາທີ</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="cta-band reveal">
-    <h2>ມີໄອດີຢາກຂາຍ?</h2>
-    <p>ລົງຂາຍຟຣີ ບໍ່ມີຄ່າທຳນຽມຈົນກວ່າຈະຂາຍໄດ້ຈິງ</p>
-    <button class="btn btn-solid btn-lg">ລົງຂາຍໄອດີດຽວນີ້</button>
-  </div>
-</section>
-
-<footer>
-  <div class="logo"><div class="logo-mark"></div>Figger<span>Shop</span></div>
-  <div class="f-cols">
-    <div><h4>ຕະຫຼາດໄອດີ</h4><ul><li><a href="#">Valorant</a></li><li><a href="#">Genshin Impact</a></li><li><a href="#">RoV</a></li></ul></div>
-    <div><h4>ບໍລິການ</h4><ul><li><a href="#">ວິທີຊື້-ຂາຍ</a></li><li><a href="#">ລະບົບ Escrow</a></li><li><a href="#">ຕິດຕໍ່ແອດມິນ</a></li></ul></div>
-    <div><h4>ບໍລິສັດ</h4><ul><li><a href="#">ກ່ຽວກັບພວກເຮົາ</a></li><li><a href="#">ຂໍ້ຕົກລົງການໃຊ້ງານ</a></li></ul></div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
