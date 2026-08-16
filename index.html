@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Dark Profile — Template</title>
+<style>
+  :root{
+    --void:#07070a;
+    --void-2:#0d0d11;
+    --center-lift:#141419;
+    --panel:rgba(22,22,26,0.50);
+    --panel-strong:rgba(26,26,31,0.62);
+    --edge:rgba(255,255,255,0.10);
+    --edge-soft:rgba(255,255,255,0.05);
+    --ink:#f3f3f5;
+    --ink-dim:rgba(243,243,245,0.55);
+    --ink-faint:rgba(243,243,245,0.30);
+    --spark:#cfe0ff;
+    --spark-soft:rgba(207,224,255,0.22);
+    --skel:rgba(255,255,255,0.08);
+    --skel-hi:rgba(255,255,255,0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    min-height:100vh;
+    background:var(--void);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+  }
+
+  /* ================= 01 — STAGE / DARK BACKGROUND ================= */
+  .stage{
+    width:100%;
+    max-width:460px;
+    min-height:100vh;
+    position:relative;
+    background:
+      radial-gradient(ellipse 70% 45% at 50% 30%, var(--center-lift), transparent 70%),
+      linear-gradient(180deg, var(--void-2) 0%, var(--void) 55%, #050506 100%);
+    overflow:hidden;
+    padding:22px 14px 40px;
+  }
+
+  /* fine grain noise, opacity kept very low */
+  .fx-noise{
+    position:absolute; inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    z-index:5;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:180px 180px;
+  }
+
+  /* cinematic vignette — section 16 */
+  .fx-vignette{
+    position:absolute; inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    z-index:6;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 38%, transparent 45%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 12%, transparent 85%, rgba(0,0,0,0.5) 100%);
+  }
+
+  /* ================= 02 — LARGE ROUNDED FRAME ================= */
+  .frame{
+    position:relative;
+    isolation:isolate;
+    border-radius:38px;
+    background:rgba(8,8,10,0.55);
+    border:1px solid var(--edge-soft);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.65),
+      inset 0 0 60px -20px rgba(180,200,255,0.08);
+    padding:20px 18px 26px;
+    overflow:hidden;
+    animation:riseIn 0.9s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .frame::before{ /* inner highlight — top edge only, no corner-mask trick */
+    content:"";
+    position:absolute;
+    top:0; left:8%; right:8%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+    pointer-events:none;
+  }
+
+  /* ================= 07 — OVERSIZED BACKGROUND TYPOGRAPHY ================= */
+  .bg-type{
+    position:absolute;
+    top:38%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:min(26vw,150px);
+    font-weight:900;
+    letter-spacing:0.02em;
+    color:rgba(255,255,255,0.05);
+    white-space:nowrap;
+    filter:blur(0.5px);
+    z-index:1;
+    pointer-events:none;
+    user-select:none;
+  }
+
+  /* ================= 06 — BACKGROUND ENERGY / LIGHTNING ================= */
+  .fx-energy{
+    position:absolute; inset:0;
+    border-radius:inherit;
+    z-index:2;
+    pointer-events:none;
+  }
+  .fx-energy svg{width:100%;height:100%;}
+  .fx-energy path{
+    fill:none;
+    stroke:rgba(215,228,255,0.5);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    filter:drop-shadow(0 0 3px rgba(190,210,255,0.65)) drop-shadow(0 0 9px rgba(150,180,255,0.35));
+  }
+  .fx-energy path.b1{animation:boltFlicker 5.2s ease-in-out infinite;}
+  .fx-energy path.b2{animation:boltFlicker 6.4s ease-in-out infinite 0.8s;}
+  .fx-energy path.b3{animation:boltFlicker 4.6s ease-in-out infinite 1.6s;}
+  .fx-energy path.b4{animation:boltFlicker 7s ease-in-out infinite 2.4s;}
+
+  /* ================= 15 — PARTICLES ================= */
+  .particles{ position:absolute; inset:0; border-radius:inherit; z-index:3; pointer-events:none; }
+  .particle{
+    position:absolute;
+    width:3px; height:3px;
+    border-radius:50%;
+    background:rgba(220,232,255,0.8);
+    box-shadow:0 0 6px 1px rgba(200,220,255,0.6);
+    opacity:0;
+    animation:particleFloat 7s ease-in-out infinite;
+  }
+
+  /* ================= content layer ================= */
+  .content{ position:relative; z-index:7; }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:6px;
+    animation:fadeUp 0.7s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.05s;
+  }
+  .icon-btn{
+    width:40px; height:40px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--panel);
+    border:1px solid var(--edge-soft);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    color:rgba(255,255,255,0.5);
+    box-shadow:0 4px 16px -6px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .icon-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+  .view-pill{
+    display:flex; align-items:center; gap:6px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--panel);
+    border:1px solid var(--edge-soft);
+    backdrop-filter:blur(14px);
+  }
+  .view-pill .dot{width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,0.25);}
+  .view-pill .bar{width:22px;height:8px;border-radius:3px;background:var(--skel);}
+
+  /* ================= 05 — MAIN VISUAL ================= */
+  .visual-wrap{
+    display:flex;
+    justify-content:center;
+    margin-top:14px;
+    position:relative;
+  }
+  .visual-glow{
+    position:absolute;
+    width:220px;height:220px;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(210,225,255,0.20), transparent 68%);
+    filter:blur(4px);
+    animation:breathe 4.5s ease-in-out infinite;
+    z-index:0;
+  }
+  .visual-placeholder{
+    position:relative;
+    width:150px; height:150px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 42% 32%, rgba(255,255,255,0.14), rgba(255,255,255,0.03) 65%);
+    border:1px solid var(--edge);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.02),
+      0 20px 40px -18px rgba(0,0,0,0.7),
+      inset 0 0 26px rgba(0,0,0,0.5);
+    animation:floatMain 6.5s ease-in-out infinite;
+    z-index:1;
+  }
+  .visual-placeholder::after{
+    content:"";
+    position:absolute; inset:0;
+    margin:auto;
+    width:44px;height:44px;
+    border-radius:50%;
+    border:1.4px dashed rgba(255,255,255,0.2);
+  }
+
+  /* ================= 08 — MAIN TITLE (static-grain + glow, no flat text) ================= */
+  .title-placeholder{
+    margin-top:20px;
+    position:relative;
+    text-align:center;
+    font-family:"Arial Black","Segoe UI",sans-serif;
+    font-weight:900;
+    font-size:clamp(24px,7.2vw,32px);
+    letter-spacing:0.03em;
+    line-height:1;
+    color:transparent;
+    animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.35s;
+  }
+  .title-placeholder .txt{
+    position:relative;
+    display:inline-block;
+    background:
+      repeating-radial-gradient(circle at 22% 30%, #fff 0 1px, transparent 1.6px 3px),
+      repeating-radial-gradient(circle at 68% 62%, #fff 0 1px, transparent 1.4px 2.8px),
+      linear-gradient(180deg, #ffffff, #d6d8dd 60%, #a7abb4);
+    -webkit-background-clip:text;
+    background-clip:text;
+    background-size:6px 6px, 5px 5px, 100% 100%;
+    animation:staticGrain 0.5s steps(4) infinite;
+    filter:drop-shadow(0 0 10px rgba(220,230,255,0.55)) drop-shadow(0 0 26px rgba(180,200,255,0.35));
+  }
+  .title-placeholder::after{ /* pulsing glow disc behind the wordmark */
+    content:"";
+    position:absolute;
+    left:50%; top:50%;
+    transform:translate(-50%,-50%);
+    width:120%; height:230%;
+    background:radial-gradient(ellipse at center, rgba(190,210,255,0.22), transparent 65%);
+    filter:blur(6px);
+    animation:glowPulse 2.8s ease-in-out infinite;
+    z-index:-1;
+    pointer-events:none;
+  }
+  @keyframes staticGrain{
+    0%{background-position:0 0, 0 0, 0 0;}
+    25%{background-position:2px 1px, -1px 2px, 0 0;}
+    50%{background-position:-2px 2px, 1px -1px, 0 0;}
+    75%{background-position:1px -2px, -2px -1px, 0 0;}
+    100%{background-position:0 0, 0 0, 0 0;}
+  }
+  @keyframes glowPulse{
+    0%,100%{opacity:0.5; transform:translate(-50%,-50%) scale(0.95);}
+    50%{opacity:1; transform:translate(-50%,-50%) scale(1.06);}
+  }
+
+  /* ================= 09 — BADGE ================= */
+  .badge-row{
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.45s;
+  }
+  .badge-pill{
+    display:flex; align-items:center; gap:6px;
+    padding:7px 14px;
+    border-radius:999px;
+    background:var(--panel);
+    border:1px solid var(--edge-soft);
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 18px -8px rgba(210,225,255,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .badge-pill .ic{width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.35);}
+  .badge-pill .ic.round{border-radius:50%;}
+
+  /* ================= 10 — INFORMATION CHIPS ================= */
+  .chip-row{
+    margin-top:18px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.55s;
+  }
+  .chip{
+    display:flex; align-items:center; gap:8px;
+    padding:9px 15px;
+    border-radius:999px;
+    background:var(--panel);
+    border:1px solid var(--edge-soft);
+    backdrop-filter:blur(12px);
+  }
+  .chip .ic{width:13px;height:13px;border-radius:4px;background:rgba(255,255,255,0.3);flex:0 0 auto;}
+  .chip .label{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
+  .chip .bar{height:9px;border-radius:4px;background:var(--skel);}
+  .chip .bar.w1{width:50px;}
+  .chip .bar.w2{width:34px;}
+  .chip.wide{padding:10px 20px;}
+  .chip.wide .bar{width:120px;}
+
+  .chip-single{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* description */
+  .desc{
+    margin-top:16px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.65s;
+  }
+  .desc .bar{height:9px;border-radius:4px;background:rgba(255,255,255,0.06);}
+  .desc .bar:nth-child(1){width:60%;}
+  .desc .bar:nth-child(2){width:42%;}
+
+  /* notice pill */
+  .notice{
+    margin-top:22px;
+    padding:16px 20px;
+    border-radius:20px;
+    background:var(--panel-strong);
+    border:1px solid var(--edge);
+    backdrop-filter:blur(16px);
+    display:flex; align-items:center; gap:12px;
+    animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.75s;
+  }
+  .notice .ic{width:18px;height:18px;border-radius:6px;background:rgba(255,255,255,0.18);flex:0 0 auto;}
+  .notice .bar{height:10px;width:55%;border-radius:4px;background:rgba(255,255,255,0.14);}
+
+  /* ================= 11/12 — SOCIAL CARD ================= */
+  .social-card{
+    margin-top:16px;
+    position:relative;
+    isolation:isolate;
+    border-radius:26px;
+    background:var(--panel);
+    border:1px solid var(--edge);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    padding:16px;
+    display:flex; align-items:center; gap:15px;
+    box-shadow:
+      0 20px 40px -20px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+    overflow:hidden;
+    animation:fadeUp 0.85s cubic-bezier(.2,.8,.2,1) both;
+    animation-delay:0.85s;
+  }
+  .social-card::before{ /* section 12 texture: gradient darker on one side */
+    content:"";
+    position:absolute; inset:0;
+    border-radius:inherit;
+    background:linear-gradient(115deg, rgba(0,0,0,0.35) 0%, transparent 45%, rgba(255,255,255,0.03) 100%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .social-card::after{ /* soft blurred shape, kept inside bounds so it can't leak past the radius */
+    content:"";
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    border-radius:inherit;
+    background:radial-gradient(circle at 88% -10%, var(--spark-soft), transparent 55%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .social-avatar{
+    position:relative;
+    width:58px; height:58px;
+    border-radius:16px;
+    background:radial-gradient(circle at 38% 28%, rgba(255,255,255,0.16), rgba(255,255,255,0.03) 75%);
+    border:1px solid var(--edge);
+    flex:0 0 auto;
+    box-shadow:0 0 24px -8px rgba(210,225,255,0.35);
+  }
+  .social-avatar .status{
+    position:absolute; bottom:-3px; right:-3px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:#ff5a5a;
+    border:3px solid #101013;
+  }
+  .social-info{ flex:1; display:flex; flex-direction:column; gap:8px; position:relative; z-index:1; }
+  .social-info .bar{height:11px;border-radius:5px;background:var(--skel);}
+  .social-info .bar.title{width:65%;height:15px;background:var(--skel-hi);}
+  .social-info .bar.sub{width:40%;}
+  .social-info .bar.tag{width:50%;}
+
+  /* ================= keyframes ================= */
+  @keyframes riseIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @keyframes floatMain{
+    0%{transform:translateY(0) scale(1) rotate(0deg);}
+    30%{transform:translateY(-6px) scale(1.015) rotate(0.6deg);}
+    55%{transform:translateY(2px) scale(1.005) rotate(-0.4deg);}
+    80%{transform:translateY(-3px) scale(1.01) rotate(0.3deg);}
+    100%{transform:translateY(0) scale(1) rotate(0deg);}
+  }
+  @keyframes breathe{
+    0%,100%{opacity:0.55; transform:translate(-50%,-50%) scale(0.94);}
+    50%{opacity:0.9; transform:translate(-50%,-50%) scale(1.06);}
+  }
+  @keyframes boltFlicker{
+    0%,100%{opacity:0.18;}
+    46%{opacity:0.18;}
+    50%{opacity:0.9;}
+    54%{opacity:0.3;}
+    58%{opacity:0.75;}
+    64%{opacity:0.2;}
+  }
+  @keyframes particleFloat{
+    0%{opacity:0; transform:translate(0,0);}
+    15%{opacity:0.8;}
+    50%{transform:translate(6px,-26px);}
+    85%{opacity:0.5;}
+    100%{opacity:0; transform:translate(-4px,-48px);}
+  }
+
+  .home-bar{
+    position:absolute;
+    bottom:10px; left:50%;
+    transform:translateX(-50%);
+    width:120px; height:4px;
+    border-radius:2px;
+    background:rgba(255,255,255,0.18);
+    z-index:8;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important;}
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <div class="frame">
+      <div class="fx-noise"></div>
+      <div class="bg-type">XXXXXX</div>
+
+      <div class="fx-energy">
+        <svg viewBox="0 0 400 700" preserveAspectRatio="none">
+          <path class="b1" d="M30,90 L55,150 L38,160 L70,230 L50,244 L86,320"/>
+          <path class="b2" d="M86,320 L110,300 L104,340 L128,326"/>
+          <path class="b3" d="M370,70 L342,140 L360,150 L326,220 L346,232 L308,300"/>
+          <path class="b4" d="M308,300 L282,286 L292,320"/>
+          <path class="b1" d="M46,470 L70,510 L54,520 L84,570"/>
+          <path class="b3" d="M356,460 L330,500 L348,512 L318,560"/>
+        </svg>
+      </div>
+
+      <div class="particles" id="particles"></div>
+
+      <div class="fx-vignette"></div>
+
+      <div class="content">
+        <div class="topbar">
+          <div class="icon-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </div>
+          <div class="view-pill">
+            <div class="dot"></div>
+            <div class="bar"></div>
+          </div>
+          <div class="icon-btn">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+        </div>
+
+        <div class="visual-wrap">
+          <div class="visual-glow"></div>
+          <div class="visual-placeholder"></div>
+        </div>
+
+        <div class="title-placeholder"><span class="txt">STORE NAME</span></div>
+
+        <div class="badge-row">
+          <div class="badge-pill"><div class="ic"></div></div>
+          <div class="badge-pill"><div class="ic round"></div></div>
+        </div>
+
+        <div class="chip-row">
+          <div class="chip"><div class="ic"></div><span class="label">Owner</span><div class="bar w1"></div></div>
+          <div class="chip"><div class="ic"></div><span class="label">ID</span><div class="bar w2"></div></div>
+        </div>
+        <div class="chip-single">
+          <div class="chip wide"><div class="ic"></div><span class="label">Website</span><div class="bar"></div></div>
+        </div>
+
+        <div class="desc">
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <div class="notice">
+          <div class="ic"></div>
+          <div class="bar"></div>
+        </div>
+
+        <div class="social-card">
+          <div class="social-avatar"><div class="status"></div></div>
+          <div class="social-info">
+            <div class="bar title"></div>
+            <div class="bar sub"></div>
+            <div class="bar tag"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </div>
+  </div>
+
+<script>
+  // section 15 — particle system: randomized soft dust around main visual & background
+  const field = document.getElementById('particles');
+  const count = 16;
+  for (let i = 0; i < count; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const left = 10 + Math.random()*80;
+    const top = 5 + Math.random()*55;
+    const size = 2 + Math.random()*2.5;
+    const dur = 5 + Math.random()*4;
+    const delay = Math.random()*6;
+    p.style.left = left + '%';
+    p.style.top = top + '%';
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.animationDuration = dur + 's';
+    p.style.animationDelay = delay + 's';
+    field.appendChild(p);
+  }
+</script>
+</body>
+</html>
