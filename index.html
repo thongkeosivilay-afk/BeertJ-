@@ -357,6 +357,7 @@
     border:1px solid var(--edge);
     flex:0 0 auto;
     box-shadow:0 0 30px -8px rgba(255,90,90,0.4);
+    z-index:1;
   }
   .social-info{ flex:1; display:flex; flex-direction:column; gap:11px; position:relative; z-index:1; }
   .social-info .bar{height:14px;border-radius:6px;background:var(--skel);}
@@ -366,6 +367,19 @@
 
   .social-card{ text-decoration:none; cursor:pointer; transition:transform 0.2s ease, box-shadow 0.2s ease; }
   .social-card:active{ transform:scale(0.98); }
+  .card-bg-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+    pointer-events:none;
+  }
+  .card-bg-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(10,3,3,0.78) 0%, rgba(10,3,3,0.45) 55%, rgba(10,3,3,0.75) 100%);
+    z-index:0;
+    pointer-events:none;
+  }
   .social-avatar-icon{ display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(255,60,60,0.35), rgba(120,10,10,0.55)); }
   .label-text{
     height:auto; background:none; border-radius:0;
@@ -461,6 +475,8 @@
         </div>
 
         <a class="social-card" href="https://dekmashshop.tfgdhggg.workers.dev/#categories" target="_blank" rel="noopener">
+          <video class="card-bg-video" src="assets/card-bg-1.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
+          <div class="card-bg-overlay"></div>
           <div class="social-avatar" style="background-image:url('assets/store-logo.jpg');background-size:cover;background-position:center;"></div>
           <div class="social-info">
             <div class="bar title label-text">Categories</div>
@@ -470,6 +486,8 @@
         </a>
 
         <a class="social-card card-2" href="https://vt.tiktok.com/ZSVYe42Lv/" target="_blank" rel="noopener">
+          <video class="card-bg-video" src="assets/card-bg-2.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
+          <div class="card-bg-overlay"></div>
           <div class="social-avatar social-avatar-icon">
             <svg viewBox="0 0 48 48" width="44" height="44">
               <path fill="#ffffff" d="M33.5 6h-6.2v25.4c0 3.1-2.5 5.6-5.6 5.6a5.6 5.6 0 0 1-5.6-5.6 5.6 5.6 0 0 1 5.6-5.6c.6 0 1.2.1 1.7.3v-6.3a12 12 0 0 0-1.7-.1A11.9 11.9 0 0 0 9.8 31.5a11.9 11.9 0 0 0 11.9 11.9 11.9 11.9 0 0 0 11.9-11.9V18.6a15 15 0 0 0 8.7 2.8v-6.2a9 9 0 0 1-8.8-9.2Z"/>
@@ -483,6 +501,8 @@
         </a>
 
         <a class="social-card card-3" href="https://discord.gg/CM9V9UZJD" target="_blank" rel="noopener">
+          <video class="card-bg-video" src="assets/card-bg-3.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
+          <div class="card-bg-overlay"></div>
           <div class="social-avatar social-avatar-icon">
             <svg viewBox="0 0 48 48" width="46" height="46">
               <path fill="#ffffff" d="M39.5 12.8A33 33 0 0 0 31 10l-.5.9a24 24 0 0 1 6.7 2.6 30 30 0 0 0-27.4 0A24 24 0 0 1 16.5 11L16 10a33 33 0 0 0-8.5 2.8C3.5 20.8 2.5 28.6 3 36.3a33 33 0 0 0 10 5l2-3.4a19 19 0 0 1-3.4-1.6l.9-.7a25 25 0 0 0 22 0l.9.7c-1.1.6-2.2 1.2-3.4 1.6l2 3.4a33 33 0 0 0 10-5c.6-9-1.6-16.7-4.5-23.5ZM18 30.6c-1.9 0-3.5-1.8-3.5-4s1.6-4 3.5-4 3.6 1.8 3.5 4c0 2.2-1.6 4-3.5 4Zm12 0c-1.9 0-3.5-1.8-3.5-4s1.6-4 3.5-4 3.6 1.8 3.5 4c0 2.2-1.6 4-3.5 4Z"/>
@@ -499,5 +519,15 @@
       <div class="home-bar"></div>
     </div>
   </div>
+  <script>
+    document.querySelectorAll('.card-bg-video').forEach(function(v){
+      v.muted = true;
+      v.defaultMuted = true;
+      var tryPlay = function(){ v.play().catch(function(){}); };
+      tryPlay();
+      document.addEventListener('touchstart', tryPlay, { once:true, passive:true });
+      document.addEventListener('click', tryPlay, { once:true });
+    });
+  </script>
 </body>
 </html>
