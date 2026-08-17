@@ -47,6 +47,7 @@
       radial-gradient(ellipse 70% 45% at 50% 30%, var(--center-lift), transparent 70%),
       linear-gradient(180deg, var(--void-2) 0%, var(--void) 55%, #050506 100%);
     overflow:hidden;
+    border-radius:38px;
     padding:22px 14px 40px;
   }
 
@@ -220,6 +221,7 @@
       inset 0 0 60px -20px rgba(255,70,70,0.08);
     padding:20px 18px 26px;
     overflow:hidden;
+    clip-path:inset(0 round 38px);
     animation:riseIn 0.9s cubic-bezier(.2,.8,.2,1) both;
   }
   .frame::before{ /* inner highlight — top edge only, no corner-mask trick */
@@ -409,12 +411,15 @@
     backdrop-filter:blur(12px);
   }
   .chip .ic{width:13px;height:13px;border-radius:4px;background:rgba(255,140,140,0.3);flex:0 0 auto;}
+  .chip .ic svg{width:100%;height:100%;stroke:#ffb3b3;fill:none;stroke-width:2;}
   .chip .label{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
+  .chip .value{font-size:12px;font-weight:600;color:var(--ink);letter-spacing:0.02em;}
   .chip .bar{height:9px;border-radius:4px;background:var(--skel);}
   .chip .bar.w1{width:50px;}
   .chip .bar.w2{width:34px;}
   .chip.wide{padding:10px 20px;}
   .chip.wide .bar{width:120px;}
+  .chip.wide .value{word-break:break-all;}
 
   .chip-single{
     margin-top:10px;
@@ -433,20 +438,23 @@
   .desc .bar:nth-child(1){width:60%;}
   .desc .bar:nth-child(2){width:42%;}
 
-  /* notice pill */
+  /* notice text (no frame) */
   .notice{
     margin-top:22px;
-    padding:16px 20px;
-    border-radius:20px;
-    background:var(--panel-strong);
-    border:1px solid var(--edge);
-    backdrop-filter:blur(16px);
-    display:flex; align-items:center; gap:12px;
+    padding:0 6px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
     animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
     animation-delay:0.75s;
   }
-  .notice .ic{width:18px;height:18px;border-radius:6px;background:rgba(255,140,140,0.18);flex:0 0 auto;}
-  .notice .bar{height:10px;width:55%;border-radius:4px;background:rgba(255,140,140,0.14);}
+  .notice .txt{
+    font-family:'Poppins',-apple-system,sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:#ffe9e9;
+    text-shadow:0 0 18px rgba(255,80,80,0.45);
+  }
 
   /* ================= 11/12 — SOCIAL CARD ================= */
   .social-card{
@@ -596,37 +604,19 @@
       <div class="fx-vignette"></div>
 
       <div class="content">
-        <div class="topbar">
-          <div class="icon-btn">
-            <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
-          </div>
-          <div class="view-pill">
-            <div class="dot"></div>
-            <div class="bar"></div>
-          </div>
-          <div class="icon-btn">
-            <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-          </div>
-        </div>
 
         <div class="visual-wrap">
           <div class="visual-glow"></div>
           <div class="visual-placeholder"></div>
         </div>
 
-        <div class="title-placeholder"><span class="txt">STORE NAME</span></div>
-
-        <div class="badge-row">
-          <div class="badge-pill"><div class="ic"></div></div>
-          <div class="badge-pill"><div class="ic round"></div></div>
-        </div>
+        <div class="title-placeholder"><span class="txt">DEKMASHSHOP</span></div>
 
         <div class="chip-row">
-          <div class="chip"><div class="ic"></div><span class="label">Owner</span><div class="bar w1"></div></div>
-          <div class="chip"><div class="ic"></div><span class="label">ID</span><div class="bar w2"></div></div>
+          <div class="chip"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></div><span class="label">Owner</span><span class="value">DEKMASHSHOP</span></div>
         </div>
         <div class="chip-single">
-          <div class="chip wide"><div class="ic"></div><span class="label">Website</span><div class="bar"></div></div>
+          <div class="chip wide"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9Z"/></svg></div><span class="label">Website</span><span class="value">dekmashshop.tfgdhggg.workers.dev</span></div>
         </div>
 
         <div class="desc">
@@ -635,8 +625,7 @@
         </div>
 
         <div class="notice">
-          <div class="ic"></div>
-          <div class="bar"></div>
+          <span class="txt">ຮ້ານຂາຍໂປອັບດັບ 1 ໃນລາວ</span>
         </div>
 
         <a class="social-card" href="https://dekmashshop.tfgdhggg.workers.dev/#categories" target="_blank" rel="noopener">
