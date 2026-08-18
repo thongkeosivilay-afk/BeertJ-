@@ -6,12 +6,12 @@
 <title>Premium Dark Profile — Template</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&family=Noto+Sans+Lao:wght@700;900&family=Noto+Looped+Lao:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#0a0505;
-    --void-2:#120808;
-    --center-lift:#1f0f0f;
+    --void:#05050f;
+    --void-2:#0a0a1c;
+    --center-lift:#141032;
     --panel:rgba(40,16,16,0.50);
     --panel-strong:rgba(46,18,18,0.62);
     --edge:rgba(255,80,80,0.16);
@@ -74,82 +74,269 @@
       linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 12%, transparent 85%, rgba(0,0,0,0.5) 100%);
   }
 
-  /* ================= FX — PREMIUM CYBER LIGHTNING BACKGROUND SYSTEM ================= */
-  /* Layer order: 1 black base → 2 red gradient → 3 aurora smoke → 4 energy orbs →
-     5 cyber grid → 6 energy waves → 7 particles → 8 lightning →
-     9 existing noise → 10 existing vignette */
+  /* ================= FX — DEEP SPACE / COSMIC BACKGROUND SYSTEM ================= */
+  /* Layer order: 1 core nebula glow → 2 nebula wash → 3 drifting nebula clouds →
+     4 glowing star-orbs → 5 black hole → 6 starfield (3 depths) →
+     7 warp-zoom streaks → 8 shooting stars/comets →
+     9 existing noise → 10 existing vignette → 11 dragon */
 
-  /* Layer 2 — Core Glow + Red Gradient wash */
+  /* Layer 1 — Core cosmic glow */
   .fx-core-glow{
     position:absolute; left:50%; top:26%;
     width:140%; padding-bottom:90%;
     transform:translate(-50%,-50%);
     z-index:1; pointer-events:none;
-    background:radial-gradient(circle, rgba(255,45,45,0.28) 0%, rgba(255,25,25,0.12) 32%, transparent 68%);
+    background:radial-gradient(circle, rgba(90,70,255,0.24) 0%, rgba(40,20,120,0.14) 32%, transparent 68%);
     filter:blur(6px);
     mix-blend-mode:screen;
     animation:coreBreathe 9s ease-in-out infinite;
   }
   @keyframes coreBreathe{ 0%,100%{ opacity:0.7; transform:translate(-50%,-50%) scale(1); } 50%{ opacity:1; transform:translate(-50%,-50%) scale(1.08); } }
 
+  /* Layer 2 — Nebula wash */
   .fx-red-gradient{
     position:absolute; inset:0;
     z-index:1;
     pointer-events:none;
     background:
-      radial-gradient(ellipse 70% 42% at 50% 30%, rgba(255,50,50,0.2), transparent 72%),
-      linear-gradient(180deg, rgba(12,4,4,0) 0%, rgba(80,10,10,0.26) 42%, rgba(6,2,2,0) 100%);
+      radial-gradient(ellipse 70% 42% at 50% 30%, rgba(90,60,220,0.18), transparent 72%),
+      linear-gradient(180deg, rgba(4,4,12,0) 0%, rgba(20,10,60,0.28) 42%, rgba(2,2,8,0) 100%);
     mix-blend-mode:screen;
   }
 
-  /* Layer 3 — Aurora smoke ribbons */
+  /* Layer 3 — Drifting nebula clouds */
   .fx-aurora{ position:absolute; inset:-25%; z-index:1; pointer-events:none; filter:blur(38px); mix-blend-mode:screen; }
   .fx-aurora i{ position:absolute; border-radius:50%; }
   .fx-aurora i:nth-child(1){
     width:70%; height:55%; left:-15%; top:0%;
-    background:conic-gradient(from 90deg, rgba(255,20,20,0.32), rgba(120,0,0,0) 45%, rgba(255,60,60,0.22) 75%, rgba(120,0,0,0));
+    background:conic-gradient(from 90deg, rgba(90,40,220,0.30), rgba(20,0,60,0) 45%, rgba(60,140,255,0.20) 75%, rgba(20,0,60,0));
     animation:auroraSpin1 34s linear infinite;
   }
   .fx-aurora i:nth-child(2){
     width:65%; height:60%; right:-18%; bottom:-8%;
-    background:conic-gradient(from 200deg, rgba(200,0,0,0.28), rgba(80,0,0,0) 40%, rgba(255,80,80,0.18) 70%, rgba(80,0,0,0));
+    background:conic-gradient(from 200deg, rgba(180,40,220,0.24), rgba(30,0,60,0) 40%, rgba(60,200,255,0.16) 70%, rgba(30,0,60,0));
     animation:auroraSpin2 42s linear infinite reverse;
   }
   @keyframes auroraSpin1{ 0%{ transform:rotate(0deg) scale(1); opacity:0.55; } 50%{ opacity:0.85; } 100%{ transform:rotate(360deg) scale(1.05); opacity:0.55; } }
   @keyframes auroraSpin2{ 0%{ transform:rotate(0deg) scale(1); opacity:0.45; } 50%{ opacity:0.7; } 100%{ transform:rotate(360deg) scale(1.06); opacity:0.45; } }
 
-  /* Layer 4 — Red Energy Orbs */
+  /* Layer 4 — Glowing star-orbs (distant suns/planets) */
   .fx-orbs{ position:absolute; inset:0; z-index:2; pointer-events:none; mix-blend-mode:screen; }
   .fx-orbs i{ position:absolute; border-radius:50%; filter:blur(20px); }
-  .fx-orbs i:nth-child(1){ width:150px;height:150px; left:6%; top:14%; background:radial-gradient(circle, rgba(255,80,80,0.55) 0%, rgba(255,40,40,0.22) 45%, transparent 75%); animation:orbFloat1 16s ease-in-out infinite, orbPulse 5s ease-in-out infinite; }
-  .fx-orbs i:nth-child(2){ width:110px;height:110px; right:4%; top:28%; background:radial-gradient(circle, rgba(255,110,110,0.45) 0%, rgba(255,50,50,0.18) 45%, transparent 75%); animation:orbFloat2 19s ease-in-out infinite, orbPulse 6.5s ease-in-out infinite; }
-  .fx-orbs i:nth-child(3){ width:190px;height:190px; left:-8%; top:54%; background:radial-gradient(circle, rgba(230,20,20,0.4) 0%, rgba(200,10,10,0.15) 45%, transparent 75%); animation:orbFloat3 24s ease-in-out infinite, orbPulse 7.5s ease-in-out infinite; }
-  .fx-orbs i:nth-child(4){ width:120px;height:120px; right:-6%; bottom:14%; background:radial-gradient(circle, rgba(255,90,90,0.4) 0%, rgba(255,40,40,0.15) 45%, transparent 75%); animation:orbFloat1 21s ease-in-out infinite reverse, orbPulse 5.8s ease-in-out infinite; }
+  .fx-orbs i:nth-child(1){ width:150px;height:150px; left:6%; top:14%; background:radial-gradient(circle, rgba(140,160,255,0.5) 0%, rgba(90,60,220,0.2) 45%, transparent 75%); animation:orbFloat1 16s ease-in-out infinite, orbPulse 5s ease-in-out infinite; }
+  .fx-orbs i:nth-child(2){ width:110px;height:110px; right:4%; top:28%; background:radial-gradient(circle, rgba(255,220,180,0.4) 0%, rgba(255,150,80,0.15) 45%, transparent 75%); animation:orbFloat2 19s ease-in-out infinite, orbPulse 6.5s ease-in-out infinite; }
+  .fx-orbs i:nth-child(3){ width:190px;height:190px; left:-8%; top:54%; background:radial-gradient(circle, rgba(120,80,255,0.35) 0%, rgba(80,30,200,0.13) 45%, transparent 75%); animation:orbFloat3 24s ease-in-out infinite, orbPulse 7.5s ease-in-out infinite; }
+  .fx-orbs i:nth-child(4){ width:120px;height:120px; right:-6%; bottom:14%; background:radial-gradient(circle, rgba(80,200,255,0.35) 0%, rgba(40,120,220,0.13) 45%, transparent 75%); animation:orbFloat1 21s ease-in-out infinite reverse, orbPulse 5.8s ease-in-out infinite; }
   @keyframes orbFloat1{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(16px,-22px); } }
   @keyframes orbFloat2{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-20px,18px); } }
   @keyframes orbFloat3{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(14px,16px); } }
   @keyframes orbPulse{ 0%,100%{ opacity:0.65; } 50%{ opacity:1; } }
 
-  /* Layer 5 — Cyber Grid */
-  .fx-grid{
-    position:absolute; left:-20%; right:-20%; bottom:-15%; height:58%;
-    z-index:2; pointer-events:none; opacity:0.09;
-    background-image:
-      linear-gradient(rgba(255,80,80,0.8) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,80,80,0.8) 1px, transparent 1px);
-    background-size:34px 34px;
-    transform:perspective(320px) rotateX(62deg);
-    transform-origin:bottom;
-    animation:gridPan 10s linear infinite;
-    mask-image:linear-gradient(to top, black, transparent 85%);
-    -webkit-mask-image:linear-gradient(to top, black, transparent 85%);
+  /* Layer 5 — Black hole with accretion disk */
+  .fx-blackhole{
+    position:absolute;
+    left:50%; top:20%;
+    width:190px; height:190px;
+    transform:translate(-50%,-50%);
+    z-index:2; pointer-events:none;
   }
-  .fx-grid::after{
-    content:""; position:absolute; left:0; right:0; top:0; height:2px;
-    background:linear-gradient(90deg, transparent, rgba(255,90,90,0.9), transparent);
-    filter:blur(1px);
+  .fx-blackhole .disk{
+    position:absolute; inset:-38%;
+    border-radius:50%;
+    background:conic-gradient(
+      from 0deg,
+      rgba(255,210,140,0.85) 0deg,
+      rgba(255,120,60,0.5) 55deg,
+      rgba(100,40,200,0.15) 120deg,
+      transparent 180deg,
+      rgba(90,60,255,0.35) 260deg,
+      rgba(255,200,140,0.7) 330deg,
+      rgba(255,210,140,0.85) 360deg
+    );
+    filter:blur(3px);
+    mix-blend-mode:screen;
+    animation:diskSpin 18s linear infinite;
   }
-  @keyframes gridPan{ 0%{ background-position:0 0,0 0; } 100%{ background-position:0 34px,34px 0; } }
+  .fx-blackhole .disk2{
+    position:absolute; inset:-14%;
+    border-radius:50%;
+    background:conic-gradient(
+      from 90deg,
+      rgba(255,230,190,0.55) 0deg,
+      transparent 90deg,
+      rgba(120,80,255,0.4) 200deg,
+      transparent 300deg,
+      rgba(255,230,190,0.55) 360deg
+    );
+    filter:blur(1.5px);
+    mix-blend-mode:screen;
+    animation:diskSpin 9s linear infinite reverse;
+  }
+  .fx-blackhole .core{
+    position:absolute; inset:8%;
+    border-radius:50%;
+    background:radial-gradient(circle at 42% 38%, #100a1a 0%, #030204 60%, #000 100%);
+    box-shadow:
+      inset 0 0 24px 6px rgba(0,0,0,0.9),
+      0 0 22px 4px rgba(120,80,255,0.25);
+  }
+  .fx-blackhole .lens{
+    position:absolute; inset:-4%;
+    border-radius:50%;
+    border:1px solid rgba(200,190,255,0.18);
+    filter:blur(0.5px);
+    animation:lensPulse 4.5s ease-in-out infinite;
+  }
+  @keyframes diskSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+  @keyframes lensPulse{ 0%,100%{ opacity:0.5; transform:scale(1); } 50%{ opacity:0.9; transform:scale(1.05); } }
+
+  /* Layer 6 — Starfield (three parallax depths, twinkling) */
+  .fx-stars{ position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+  .fx-stars .depth{ position:absolute; inset:0; }
+  .fx-stars .d-far{ animation:starTwinkle 3.6s ease-in-out infinite; }
+  .fx-stars .d-mid{ animation:starTwinkle 2.4s ease-in-out infinite; animation-delay:0.4s; }
+  .fx-stars .d-near{ animation:starTwinkle 1.8s ease-in-out infinite; animation-delay:0.8s; }
+  .fx-stars .depth i{
+    position:absolute; border-radius:50%; background:#fff;
+  }
+  @keyframes starTwinkle{ 0%,100%{ opacity:0.55; } 50%{ opacity:1; } }
+
+  /* Layer 7 — Warp-zoom streaks (radiate outward from center, simulating flying through space) */
+  .fx-warp{
+    position:absolute; left:50%; top:38%;
+    width:2px; height:2px;
+    z-index:2; pointer-events:none;
+  }
+  .fx-warp .streak{
+    position:absolute; left:0; top:0;
+    width:1.5px; height:60px;
+    transform-origin:0 0;
+    background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(180,190,255,0.15) 55%, transparent 100%);
+    animation:warpFly 3.4s linear infinite;
+    opacity:0;
+  }
+  @keyframes warpFly{
+    0%{ transform:rotate(var(--ang)) translateY(0) scaleY(0.4); opacity:0; }
+    8%{ opacity:0.9; }
+    75%{ opacity:0.7; }
+    100%{ transform:rotate(var(--ang)) translateY(280px) scaleY(1.6); opacity:0; }
+  }
+
+  /* Layer 8 — Shooting stars / comets */
+  .fx-comets{ position:absolute; inset:0; z-index:2; pointer-events:none; overflow:hidden; }
+  .fx-comets .comet{
+    position:absolute;
+    width:100px; height:2px;
+    background:linear-gradient(90deg, rgba(255,255,255,0.95), rgba(160,190,255,0.4) 55%, transparent 100%);
+    border-radius:2px;
+    opacity:0;
+    filter:drop-shadow(0 0 4px rgba(200,210,255,0.7));
+  }
+  .fx-comets .c1{ top:8%;  left:-20%; transform:rotate(22deg); animation:cometFly 7s ease-in infinite; animation-delay:0.5s; }
+  .fx-comets .c2{ top:36%; left:-25%; transform:rotate(16deg); animation:cometFly 9s ease-in infinite; animation-delay:3.2s; }
+  .fx-comets .c3{ top:64%; left:-20%; transform:rotate(26deg); animation:cometFly 8s ease-in infinite; animation-delay:5.8s; }
+  @keyframes cometFly{
+    0%{ opacity:0; transform:translate(0,0) rotate(22deg) scaleX(0.6); }
+    6%{ opacity:1; }
+    35%{ opacity:0.9; transform:translate(230px,110px) rotate(22deg) scaleX(1.1); }
+    46%{ opacity:0; transform:translate(310px,150px) rotate(22deg) scaleX(1.3); }
+    100%{ opacity:0; transform:translate(310px,150px) rotate(22deg) scaleX(1.3); }
+  }
+
+  @media (max-width:480px){
+    .fx-blackhole{ width:150px; height:150px; }
+  }
+
+  /* Layer 6.7 — Slithering Red Dragon (motion-path chain technique) */
+  .fx-dragon{
+    position:absolute; inset:0;
+    z-index:4; pointer-events:none;
+    overflow:hidden;
+  }
+  .d-seg{
+    position:absolute; top:0; left:0;
+    width:22px; height:16px;
+    margin:-8px 0 0 -11px;
+    border-radius:50% 50% 45% 45%;
+    background:
+      radial-gradient(ellipse at 35% 30%, rgba(255,190,120,0.9) 0%, rgba(255,70,30,0.85) 30%, rgba(160,10,10,0.85) 62%, rgba(60,0,0,0.7) 100%);
+    box-shadow:0 0 10px 1px rgba(255,50,20,0.55), inset 0 0 4px rgba(0,0,0,0.4);
+    offset-path: path("M -60,110 C 60,20 150,230 250,150 C 360,60 420,180 380,280 C 340,380 190,340 150,440 C 110,540 260,560 300,650 C 340,740 200,760 150,840 C 100,920 260,900 340,960");
+    offset-rotate:auto;
+    animation:
+      dragonTravel 11s linear infinite,
+      dragonFade 11s linear infinite,
+      dragonPulse 1.6s ease-in-out infinite;
+    animation-delay:
+      calc(var(--i) * -0.14s),
+      calc(var(--i) * -0.14s),
+      calc(var(--i) * -0.08s);
+    transform:scale(calc(1 - var(--i) * 0.045));
+    filter:blur(0.2px);
+  }
+  @keyframes dragonTravel{ from{ offset-distance:0%; } to{ offset-distance:100%; } }
+  @keyframes dragonFade{
+    0%{ opacity:0; }
+    4%{ opacity:0.95; }
+    90%{ opacity:0.95; }
+    100%{ opacity:0; }
+  }
+  @keyframes dragonPulse{ 0%,100%{ filter:brightness(1); } 50%{ filter:brightness(1.25); } }
+
+  .d-head{
+    width:34px; height:26px;
+    margin:-13px 0 0 -20px;
+    border-radius:38% 62% 55% 55%;
+    background:
+      radial-gradient(ellipse at 32% 30%, rgba(255,220,160,0.98) 0%, rgba(255,90,30,0.95) 32%, rgba(190,10,10,0.95) 65%, rgba(70,0,0,0.85) 100%);
+    box-shadow:0 0 16px 3px rgba(255,60,20,0.75), inset 0 0 5px rgba(0,0,0,0.45);
+    z-index:2;
+  }
+  .d-head .horn{
+    position:absolute;
+    width:3px; height:14px;
+    background:linear-gradient(180deg, rgba(255,200,150,0.95), rgba(120,10,10,0.9));
+    border-radius:2px;
+    box-shadow:0 0 6px rgba(255,80,30,0.6);
+  }
+  .d-head .hl{ left:6px; top:-11px; transform:rotate(-18deg); }
+  .d-head .hr{ left:16px; top:-12px; transform:rotate(14deg); }
+  .d-head .eye{
+    position:absolute;
+    width:4px; height:4px;
+    left:9px; top:9px;
+    border-radius:50%;
+    background:#fff2c4;
+    box-shadow:0 0 6px 2px rgba(255,230,140,0.95), 0 0 10px 4px rgba(255,80,20,0.5);
+    animation:eyeBlink 3.2s ease-in-out infinite;
+  }
+  @keyframes eyeBlink{ 0%,92%,100%{ opacity:1; transform:scaleY(1); } 95%{ opacity:1; transform:scaleY(0.15); } }
+
+  .d-fin{
+    background:
+      radial-gradient(ellipse at 35% 30%, rgba(255,190,120,0.9) 0%, rgba(255,70,30,0.85) 30%, rgba(160,10,10,0.85) 62%, rgba(60,0,0,0.7) 100%);
+  }
+  .d-fin::after{
+    content:"";
+    position:absolute;
+    top:-9px; left:50%;
+    width:0; height:0;
+    transform:translateX(-50%);
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom:9px solid rgba(200,20,20,0.75);
+    filter:drop-shadow(0 0 4px rgba(255,60,20,0.6));
+  }
+  .d-tail{
+    width:9px; height:7px;
+    margin:-4px 0 0 -5px;
+    box-shadow:0 0 6px 1px rgba(255,50,20,0.45);
+  }
+
+  @media (max-width:480px){
+    .d-seg{ filter:none; }
+    .fx-dragon{ opacity:0.92; }
+  }
 
   /* Layer 7 — Floating Particles (sharp core + soft glow) */
   .fx-particles{ position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
@@ -174,16 +361,16 @@
     animation:particleFloatA 20s ease-in-out infinite;
   }
   .fx-particles .layer-b{
-    background:rgba(255,80,80,0.85);
+    background:rgba(140,190,255,0.85);
     box-shadow:
-      100px 100px 0 0 rgba(255,80,80,0.65),
-      200px 260px 0 0 rgba(255,80,80,0.5),
-      40px 320px 0 0 rgba(255,110,110,0.6),
-      300px 180px 0 0 rgba(255,80,80,0.5),
-      150px 480px 0 0 rgba(255,110,110,0.55),
-      260px 560px 0 0 rgba(255,80,80,0.45),
-      70px 640px 0 0 rgba(255,110,110,0.5),
-      330px 720px 0 0 rgba(255,80,80,0.45);
+      100px 100px 0 0 rgba(140,190,255,0.65),
+      200px 260px 0 0 rgba(140,190,255,0.5),
+      40px 320px 0 0 rgba(180,210,255,0.6),
+      300px 180px 0 0 rgba(140,190,255,0.5),
+      150px 480px 0 0 rgba(180,210,255,0.55),
+      260px 560px 0 0 rgba(140,190,255,0.45),
+      70px 640px 0 0 rgba(180,210,255,0.5),
+      330px 720px 0 0 rgba(140,190,255,0.45);
     animation:particleFloatB 26s ease-in-out infinite;
   }
   @keyframes particleFloatA{ 0%,100%{ transform:translateY(0); opacity:0.75; } 50%{ transform:translateY(-16px); opacity:1; } }
@@ -203,9 +390,9 @@
     }
     .fx-particles .layer-b{
       box-shadow:
-        100px 100px 0 0 rgba(255,80,80,0.65),
-        40px 320px 0 0 rgba(255,110,110,0.6),
-        150px 480px 0 0 rgba(255,110,110,0.55);
+        100px 100px 0 0 rgba(140,190,255,0.65),
+        40px 320px 0 0 rgba(180,210,255,0.6),
+        150px 480px 0 0 rgba(180,210,255,0.55);
     }
   }
 
@@ -325,10 +512,10 @@
     margin-top:20px;
     position:relative;
     text-align:center;
-    font-family:"Arial Black","Segoe UI",sans-serif;
-    font-weight:900;
+    font-family:"Anton","Arial Black","Segoe UI",sans-serif;
+    font-weight:400;
     font-size:clamp(24px,7.2vw,32px);
-    letter-spacing:0.03em;
+    letter-spacing:0.05em;
     line-height:1;
     color:transparent;
     animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
@@ -406,14 +593,16 @@
     display:flex; align-items:center; gap:8px;
     padding:9px 15px;
     border-radius:999px;
-    background:var(--panel);
-    border:1px solid var(--edge-soft);
-    backdrop-filter:blur(12px);
+    background:none;
+    border:none;
+    box-shadow:none;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
   }
   .chip .ic{width:13px;height:13px;border-radius:4px;background:rgba(255,140,140,0.3);flex:0 0 auto;}
   .chip .ic svg{width:100%;height:100%;stroke:#ffb3b3;fill:none;stroke-width:2;}
   .chip .label{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
-  .chip .value{font-size:12px;font-weight:600;color:var(--ink);letter-spacing:0.02em;}
+  .chip .value{font-family:'Anton',sans-serif;font-size:13px;font-weight:400;color:var(--ink);letter-spacing:0.03em;}
   .chip .bar{height:9px;border-radius:4px;background:var(--skel);}
   .chip .bar.w1{width:50px;}
   .chip .bar.w2{width:34px;}
@@ -455,12 +644,21 @@
     animation-delay:0.75s;
   }
   .notice .txt{
-    font-family:'Poppins',-apple-system,sans-serif;
-    font-weight:600;
-    font-size:15px;
+    font-family:'Noto Looped Lao','Noto Sans Lao','Poppins',-apple-system,sans-serif;
+    font-weight:900;
+    font-size:18px;
     letter-spacing:0.02em;
-    color:#ffe9e9;
-    text-shadow:0 0 18px rgba(255,80,80,0.45);
+    background:linear-gradient(180deg,#fff5f5 0%,#ffb3b3 45%,#ff5c5c 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 10px rgba(255,90,90,0.65), 0 0 26px rgba(255,60,60,0.5);
+    animation:noticeGlow 2.8s ease-in-out infinite;
+    display:inline-block;
+  }
+  @keyframes noticeGlow{
+    0%,100%{ filter:brightness(1); }
+    50%{ filter:brightness(1.25); }
   }
 
   /* ================= 11/12 — SOCIAL CARD ================= */
@@ -648,10 +846,157 @@
       <div class="fx-red-gradient"></div>
       <div class="fx-aurora"><i></i><i></i></div>
       <div class="fx-orbs"><i></i><i></i><i></i><i></i></div>
-      <div class="fx-grid"></div>
+
+      <div class="fx-stars">
+        <div class="depth d-far"><i style="width:1px;height:1px;box-shadow:
+      32.4vw 15.1vh 0 0 rgba(255,255,255,0.55),
+      7.2vw 53.6vh 0 0 rgba(255,255,255,0.46),
+      5.8vw 50.7vh 0 0 rgba(255,255,255,0.36),
+      43.4vw 7.0vh 0 0 rgba(255,255,255,0.38),
+      42.5vw 82.7vh 0 0 rgba(255,255,255,0.39),
+      22.3vw 62.7vh 0 0 rgba(255,255,255,0.63),
+      57.7vw 39.7vh 0 0 rgba(255,255,255,0.64),
+      4.7vw 85.8vh 0 0 rgba(255,255,255,0.44),
+      14.4vw 11.8vh 0 0 rgba(255,255,255,0.44),
+      81.6vw 18.1vh 0 0 rgba(255,255,255,0.52),
+      63.9vw 37.2vh 0 0 rgba(255,255,255,0.51),
+      6.3vw 6.0vh 0 0 rgba(255,255,255,0.41),
+      68.0vw 42.8vh 0 0 rgba(255,255,255,0.44),
+      58.6vw 45.3vh 0 0 rgba(255,255,255,0.44),
+      79.4vw 69.9vh 0 0 rgba(255,255,255,0.42),
+      57.4vw 52.5vh 0 0 rgba(255,255,255,0.61),
+      72.9vw 28.8vh 0 0 rgba(255,255,255,0.64),
+      11.8vw 41.8vh 0 0 rgba(255,255,255,0.58),
+      15.2vw 48.9vh 0 0 rgba(255,255,255,0.36),
+      66.8vw 76.5vh 0 0 rgba(255,255,255,0.52),
+      87.5vw 31.4vh 0 0 rgba(255,255,255,0.56),
+      59.4vw 58.0vh 0 0 rgba(255,255,255,0.49),
+      84.0vw 94.5vh 0 0 rgba(255,255,255,0.49),
+      66.4vw 6.1vh 0 0 rgba(255,255,255,0.56),
+      64.7vw 99.3vh 0 0 rgba(255,255,255,0.6),
+      28.5vw 38.6vh 0 0 rgba(255,255,255,0.55),
+      2.3vw 46.2vh 0 0 rgba(255,255,255,0.4),
+      11.7vw 5.9vh 0 0 rgba(255,255,255,0.58),
+      12.9vw 24.8vh 0 0 rgba(255,255,255,0.47),
+      87.1vw 8.1vh 0 0 rgba(255,255,255,0.48),
+      54.9vw 88.3vh 0 0 rgba(255,255,255,0.6),
+      86.4vw 27.8vh 0 0 rgba(255,255,255,0.47),
+      35.9vw 88.4vh 0 0 rgba(255,255,255,0.64),
+      15.1vw 17.6vh 0 0 rgba(255,255,255,0.42),
+      23.3vw 48.5vh 0 0 rgba(255,255,255,0.53),
+      26.3vw 0.4vh 0 0 rgba(255,255,255,0.48),
+      36.9vw 56.6vh 0 0 rgba(255,255,255,0.64),
+      69.0vw 51.5vh 0 0 rgba(255,255,255,0.54),
+      67.6vw 5.4vh 0 0 rgba(255,255,255,0.62),
+      78.0vw 87.5vh 0 0 rgba(255,255,255,0.59),
+      39.2vw 39.9vh 0 0 rgba(255,255,255,0.38),
+      63.4vw 6.2vh 0 0 rgba(255,255,255,0.37),
+      20.9vw 16.2vh 0 0 rgba(255,255,255,0.45),
+      5.3vw 0.0vh 0 0 rgba(255,255,255,0.4),
+      10.1vw 36.4vh 0 0 rgba(255,255,255,0.36)"></i></div>
+        <div class="depth d-mid"><i style="width:1.5px;height:1.5px;box-shadow:
+      87.4vw 61.4vh 0 0 rgba(255,255,255,0.55),
+      25.2vw 34.7vh 0 0 rgba(255,255,255,0.63),
+      12.3vw 84.9vh 0 0 rgba(255,255,255,0.85),
+      46.6vw 48.4vh 0 0 rgba(255,255,255,0.53),
+      10.2vw 34.3vh 0 0 rgba(255,255,255,0.59),
+      82.9vw 16.1vh 0 0 rgba(255,255,255,0.51),
+      95.1vw 52.8vh 0 0 rgba(255,255,255,0.55),
+      54.3vw 2.7vh 0 0 rgba(255,255,255,0.68),
+      97.9vw 86.3vh 0 0 rgba(255,255,255,0.74),
+      26.1vw 36.7vh 0 0 rgba(255,255,255,0.56),
+      77.2vw 53.3vh 0 0 rgba(255,255,255,0.77),
+      33.0vw 22.3vh 0 0 rgba(255,255,255,0.78),
+      98.5vw 85.3vh 0 0 rgba(255,255,255,0.78),
+      81.8vw 74.0vh 0 0 rgba(255,255,255,0.58),
+      51.8vw 35.6vh 0 0 rgba(255,255,255,0.51),
+      2.8vw 27.9vh 0 0 rgba(255,255,255,0.59),
+      69.3vw 95.7vh 0 0 rgba(255,255,255,0.66),
+      93.7vw 98.8vh 0 0 rgba(255,255,255,0.83),
+      36.5vw 22.0vh 0 0 rgba(255,255,255,0.58),
+      19.7vw 20.4vh 0 0 rgba(255,255,255,0.72),
+      90.0vw 84.0vh 0 0 rgba(255,255,255,0.67),
+      65.3vw 80.0vh 0 0 rgba(255,255,255,0.53),
+      66.1vw 91.0vh 0 0 rgba(255,255,255,0.77),
+      75.0vw 47.8vh 0 0 rgba(255,255,255,0.56),
+      78.9vw 33.3vh 0 0 rgba(255,255,255,0.78),
+      97.2vw 39.6vh 0 0 rgba(255,255,255,0.64),
+      94.7vw 72.5vh 0 0 rgba(255,255,255,0.56),
+      12.7vw 15.1vh 0 0 rgba(255,255,255,0.82)"></i></div>
+        <div class="depth d-near"><i style="width:2px;height:2px;box-shadow:
+      80.7vw 14.6vh 0 0 rgba(255,255,255,0.95),
+      98.0vw 65.7vh 0 0 rgba(255,255,255,0.81),
+      54.9vw 13.1vh 0 0 rgba(255,255,255,0.7),
+      97.1vw 65.0vh 0 0 rgba(255,255,255,0.86),
+      93.4vw 43.4vh 0 0 rgba(255,255,255,0.96),
+      82.6vw 21.1vh 0 0 rgba(255,255,255,0.78),
+      29.3vw 24.1vh 0 0 rgba(255,255,255,0.88),
+      25.9vw 41.9vh 0 0 rgba(255,255,255,0.74),
+      91.0vw 35.4vh 0 0 rgba(255,255,255,0.84),
+      58.3vw 90.4vh 0 0 rgba(255,255,255,0.83),
+      91.8vw 50.2vh 0 0 rgba(255,255,255,0.86),
+      52.4vw 1.9vh 0 0 rgba(255,255,255,0.83),
+      18.3vw 0.4vh 0 0 rgba(255,255,255,0.94),
+      17.2vw 47.3vh 0 0 rgba(255,255,255,0.92),
+      55.6vw 32.6vh 0 0 rgba(255,255,255,0.86),
+      55.5vw 78.4vh 0 0 rgba(255,255,255,0.73)"></i></div>
+      </div>
+
+      <div class="fx-warp">
+        <i class="streak" style="--ang:0deg; animation-delay:0.0s;"></i>
+        <i class="streak" style="--ang:18deg; animation-delay:0.32s;"></i>
+        <i class="streak" style="--ang:36deg; animation-delay:0.64s;"></i>
+        <i class="streak" style="--ang:54deg; animation-delay:0.96s;"></i>
+        <i class="streak" style="--ang:72deg; animation-delay:1.28s;"></i>
+        <i class="streak" style="--ang:90deg; animation-delay:1.6s;"></i>
+        <i class="streak" style="--ang:108deg; animation-delay:1.92s;"></i>
+        <i class="streak" style="--ang:126deg; animation-delay:2.24s;"></i>
+        <i class="streak" style="--ang:144deg; animation-delay:2.56s;"></i>
+        <i class="streak" style="--ang:162deg; animation-delay:2.88s;"></i>
+        <i class="streak" style="--ang:180deg; animation-delay:0.0s;"></i>
+        <i class="streak" style="--ang:198deg; animation-delay:0.32s;"></i>
+        <i class="streak" style="--ang:216deg; animation-delay:0.64s;"></i>
+        <i class="streak" style="--ang:234deg; animation-delay:0.96s;"></i>
+        <i class="streak" style="--ang:252deg; animation-delay:1.28s;"></i>
+        <i class="streak" style="--ang:270deg; animation-delay:1.6s;"></i>
+        <i class="streak" style="--ang:288deg; animation-delay:1.92s;"></i>
+        <i class="streak" style="--ang:306deg; animation-delay:2.24s;"></i>
+        <i class="streak" style="--ang:324deg; animation-delay:2.56s;"></i>
+        <i class="streak" style="--ang:342deg; animation-delay:2.88s;"></i>
+      </div>
+
+      <div class="fx-comets">
+        <div class="comet c1"></div>
+        <div class="comet c2"></div>
+        <div class="comet c3"></div>
+      </div>
+
+      <div class="fx-dragon">
+        <div class="d-seg d-head" style="--i:0"><i class="horn hl"></i><i class="horn hr"></i><i class="eye"></i></div>
+        <div class="d-seg" style="--i:1"></div>
+        <div class="d-seg" style="--i:2"></div>
+        <div class="d-seg" style="--i:3"></div>
+        <div class="d-seg d-fin" style="--i:4"></div>
+        <div class="d-seg" style="--i:5"></div>
+        <div class="d-seg" style="--i:6"></div>
+        <div class="d-seg d-fin" style="--i:7"></div>
+        <div class="d-seg" style="--i:8"></div>
+        <div class="d-seg" style="--i:9"></div>
+        <div class="d-seg d-fin" style="--i:10"></div>
+        <div class="d-seg" style="--i:11"></div>
+        <div class="d-seg" style="--i:12"></div>
+        <div class="d-seg" style="--i:13"></div>
+        <div class="d-seg" style="--i:14"></div>
+        <div class="d-seg" style="--i:15"></div>
+        <div class="d-seg" style="--i:16"></div>
+        <div class="d-seg" style="--i:17"></div>
+        <div class="d-seg" style="--i:18"></div>
+        <div class="d-seg d-tail" style="--i:19"></div>
+      </div>
       <div class="fx-particles"><i class="layer-a"></i><i class="layer-b"></i></div>
       <div class="fx-noise"></div>
       <div class="fx-vignette"></div>
+
 
       <div class="content">
 
@@ -669,13 +1014,10 @@
           <div class="chip wide"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9Z"/></svg></div><span class="label">Website</span><span class="value">dekmashshop.tfgdhggg.workers.dev</span></div>
         </div>
 
-        <div class="desc">
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
+        <div class="desc"></div>
 
         <div class="notice">
-          <span class="txt">ຮ້ານຂາຍໂປອັບດັບ 1 ໃນລາວ</span>
+          <span class="txt">ຮ້ານຂາຍໂປອັນດັບ 1 ໃນລາວ</span>
         </div>
 
         <a class="social-card" href="https://dekmashshop.tfgdhggg.workers.dev/#categories" target="_blank" rel="noopener">
