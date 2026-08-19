@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Dark Profile — Template</title>
+<title>DEKMASHSHOP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&family=Noto+Sans+Lao:wght@700;900&family=Noto+Looped+Lao:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Anton&family=Poppins:wght@400;500;600&family=Noto+Sans+Lao:wght@700;900&family=Noto+Looped+Lao:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#05050f;
-    --void-2:#0a0a1c;
-    --center-lift:#141032;
-    --panel:rgba(40,16,16,0.50);
-    --panel-strong:rgba(46,18,18,0.62);
+    --void:#080505;
+    --void-2:#120808;
+    --center-lift:#240F0F;
+    --panel:rgba(38,14,14,0.50);
+    --panel-strong:rgba(44,16,16,0.62);
     --edge:rgba(255,80,80,0.16);
     --edge-soft:rgba(255,80,80,0.08);
-    --ink:#fff3f3;
-    --ink-dim:rgba(255,220,220,0.55);
-    --ink-faint:rgba(255,200,200,0.30);
-    --spark:#ff5c5c;
-    --spark-soft:rgba(255,70,70,0.28);
+    --ink:#f3fff5;
+    --ink-dim:rgba(220,255,230,0.55);
+    --ink-faint:rgba(200,255,210,0.30);
+    --spark:#FF3E3E;
+    --spark-soft:rgba(255,62,62,0.28);
     --skel:rgba(255,90,90,0.14);
     --skel-hi:rgba(255,90,90,0.24);
   }
@@ -75,7 +75,7 @@
     border:1px solid var(--edge-soft);
     box-shadow:
       0 30px 60px -20px rgba(0,0,0,0.65),
-      inset 0 0 60px -20px rgba(255,70,70,0.08);
+      inset 0 0 60px -20px rgba(255,80,80,0.08);
     padding:20px 18px 26px;
     overflow:hidden;
     clip-path:inset(0 round 38px);
@@ -96,10 +96,11 @@
     top:38%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size:min(26vw,150px);
-    font-weight:900;
+    font-family:'Rajdhani',sans-serif;
+    font-size:min(22vw,150px);
+    font-weight:700;
     letter-spacing:0.02em;
-    color:rgba(255,140,140,0.05);
+    color:rgba(255,140,140,0.045);
     white-space:nowrap;
     filter:blur(0.5px);
     z-index:1;
@@ -153,7 +154,7 @@
     width:220px;height:220px;
     left:50%; top:50%;
     transform:translate(-50%,-50%);
-    background:radial-gradient(circle, rgba(255,90,90,0.20), transparent 68%);
+    background:radial-gradient(circle, rgba(255,62,62,0.20), transparent 68%);
     filter:blur(4px);
     animation:breathe 4.5s ease-in-out infinite;
     z-index:0;
@@ -176,16 +177,37 @@
     z-index:1;
     overflow:hidden;
   }
+  .visual-inner{
+    position:relative;
+    width:150px;
+    height:150px;
+    z-index:1;
+  }
+  .visual-crystal{
+    position:absolute;
+    top:-10px;
+    right:4px;
+    width:30px;
+    height:42px;
+    z-index:2;
+    filter: drop-shadow(0 0 8px #FF3E3E) drop-shadow(0 0 18px rgba(255,62,62,0.75));
+    animation:crystalPulse 2.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes crystalPulse{
+    0%,100%{ filter: drop-shadow(0 0 6px #FF3E3E) drop-shadow(0 0 12px rgba(255,62,62,0.5)); opacity:0.9;}
+    50%{ filter: drop-shadow(0 0 12px #FF3E3E) drop-shadow(0 0 24px rgba(255,62,62,0.85)); opacity:1;}
+  }
 
   /* ================= 08 — MAIN TITLE (static-grain + glow, no flat text) ================= */
   .title-placeholder{
     margin-top:20px;
     position:relative;
     text-align:center;
-    font-family:"Anton","Arial Black","Segoe UI",sans-serif;
-    font-weight:400;
-    font-size:clamp(24px,7.2vw,32px);
-    letter-spacing:0.05em;
+    font-family:"Rajdhani","Anton","Arial Black","Segoe UI",sans-serif;
+    font-weight:700;
+    font-size:clamp(26px,7.6vw,34px);
+    letter-spacing:0.08em;
     line-height:1;
     color:transparent;
     animation:fadeUp 0.8s cubic-bezier(.2,.8,.2,1) both;
@@ -194,15 +216,10 @@
   .title-placeholder .txt{
     position:relative;
     display:inline-block;
-    background:
-      repeating-radial-gradient(circle at 22% 30%, #fff 0 1px, transparent 1.6px 3px),
-      repeating-radial-gradient(circle at 68% 62%, #fff 0 1px, transparent 1.4px 2.8px),
-      linear-gradient(180deg, #fff5f5, #ffd6d6 60%, #ff8f8f);
+    background: linear-gradient(180deg, #ffffff, #eafff1 60%, #bdffd2);
     -webkit-background-clip:text;
     background-clip:text;
-    background-size:6px 6px, 5px 5px, 100% 100%;
-    animation:staticGrain 0.5s steps(4) infinite;
-    filter:drop-shadow(0 0 10px rgba(255,110,110,0.55)) drop-shadow(0 0 26px rgba(255,70,70,0.35));
+    filter:drop-shadow(0 0 10px rgba(140,255,180,0.5)) drop-shadow(0 0 26px rgba(62,255,123,0.35));
   }
   .title-placeholder::after{ /* pulsing glow disc behind the wordmark */
     content:"";
@@ -210,7 +227,7 @@
     left:50%; top:50%;
     transform:translate(-50%,-50%);
     width:120%; height:230%;
-    background:radial-gradient(ellipse at center, rgba(255,70,70,0.22), transparent 65%);
+    background:radial-gradient(ellipse at center, rgba(255,62,62,0.20), transparent 65%);
     filter:blur(6px);
     animation:glowPulse 2.8s ease-in-out infinite;
     z-index:-1;
@@ -244,7 +261,7 @@
     background:var(--panel);
     border:1px solid var(--edge-soft);
     backdrop-filter:blur(12px);
-    box-shadow:0 0 18px -8px rgba(255,90,90,0.35), inset 0 1px 0 rgba(255,140,140,0.05);
+    box-shadow:0 0 18px -8px rgba(255,80,80,0.35), inset 0 1px 0 rgba(255,140,140,0.05);
   }
   .badge-pill .ic{width:14px;height:14px;border-radius:4px;background:rgba(255,140,140,0.35);}
   .badge-pill .ic.round{border-radius:50%;}
@@ -261,16 +278,16 @@
   }
   .chip{
     display:flex; align-items:center; gap:8px;
-    padding:9px 15px;
+    padding:9px 16px;
     border-radius:999px;
-    background:none;
-    border:none;
+    background:var(--panel);
+    border:1px solid var(--edge-soft);
     box-shadow:none;
-    backdrop-filter:none;
-    -webkit-backdrop-filter:none;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
   }
   .chip .ic{width:13px;height:13px;border-radius:4px;background:rgba(255,140,140,0.3);flex:0 0 auto;}
-  .chip .ic svg{width:100%;height:100%;stroke:#ffb3b3;fill:none;stroke-width:2;}
+  .chip .ic svg{width:100%;height:100%;stroke:#FFA8A8;fill:none;stroke-width:2;}
   .chip .label{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
   .chip .value{font-family:'Anton',sans-serif;font-size:13px;font-weight:400;color:var(--ink);letter-spacing:0.03em;}
   .chip .bar{height:9px;border-radius:4px;background:var(--skel);}
@@ -318,11 +335,11 @@
     font-weight:900;
     font-size:18px;
     letter-spacing:0.02em;
-    background:linear-gradient(180deg,#fff5f5 0%,#ffb3b3 45%,#ff5c5c 100%);
+    background:linear-gradient(180deg,#f5fff8 0%,#b3ffcb 45%,#3EFF7B 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-    text-shadow:0 0 10px rgba(255,90,90,0.65), 0 0 26px rgba(255,60,60,0.5);
+    text-shadow:0 0 10px rgba(80,255,140,0.65), 0 0 26px rgba(62,255,123,0.5);
     animation:noticeGlow 2.8s ease-in-out infinite;
     display:inline-block;
   }
@@ -336,14 +353,14 @@
     margin-top:18px;
     position:relative;
     isolation:isolate;
-    border-radius:30px;
-    background:var(--panel);
-    border:1px solid var(--edge);
+    border-radius:22px;
+    background:#0F0A0A;
+    border:1px solid rgba(255,140,140,0.12);
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-    padding:20px;
-    display:flex; align-items:center; gap:20px;
-    min-height:120px;
+    padding:16px 18px;
+    display:flex; align-items:center; gap:16px;
+    min-height:96px;
     box-shadow:
       0 20px 40px -20px rgba(0,0,0,0.7),
       inset 0 1px 0 rgba(255,140,140,0.05);
@@ -353,11 +370,11 @@
   }
   .social-card.card-2{ margin-top:14px; animation-delay:0.95s; }
   .social-card.card-3{ margin-top:14px; animation-delay:1.05s; }
-  .social-card::before{ /* section 12 texture: gradient darker on one side */
+  .social-card::before{ /* fallback tint beneath video, in case video hasn't loaded yet */
     content:"";
     position:absolute; inset:0;
     border-radius:inherit;
-    background:linear-gradient(115deg, rgba(0,0,0,0.35) 0%, transparent 45%, rgba(255,140,140,0.03) 100%);
+    background:linear-gradient(115deg, rgba(0,0,0,0.4) 0%, transparent 45%, rgba(255,140,140,0.03) 100%);
     pointer-events:none;
     z-index:0;
   }
@@ -372,12 +389,12 @@
   }
   .social-avatar{
     position:relative;
-    width:88px; height:88px;
-    border-radius:22px;
+    width:58px; height:58px;
+    border-radius:50%;
     background:radial-gradient(circle at 38% 28%, rgba(255,140,140,0.16), rgba(255,140,140,0.03) 75%);
-    border:1px solid var(--edge);
+    border:2px solid rgba(0,0,0,0.3);
     flex:0 0 auto;
-    box-shadow:0 0 30px -8px rgba(255,90,90,0.4);
+    box-shadow:0 0 30px -8px rgba(255,80,80,0.4);
     z-index:1;
   }
   .social-info{ flex:1; display:flex; flex-direction:column; gap:11px; position:relative; z-index:1; }
@@ -394,14 +411,15 @@
     object-fit:cover;
     z-index:0;
     pointer-events:none;
+    filter:blur(1.5px) saturate(0.9);
   }
   .card-bg-overlay{
     position:absolute; inset:0;
-    background:linear-gradient(90deg, rgba(10,3,3,0.78) 0%, rgba(10,3,3,0.45) 55%, rgba(10,3,3,0.75) 100%);
+    background:linear-gradient(90deg, rgba(4,10,6,0.86) 0%, rgba(4,10,6,0.55) 55%, rgba(4,10,6,0.8) 100%);
     z-index:0;
     pointer-events:none;
   }
-  .social-avatar-icon{ display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(255,60,60,0.35), rgba(120,10,10,0.55)); }
+  .social-avatar-icon{ display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(255,60,60,0.35), rgba(90,10,10,0.55)); }
   .label-text{
     height:auto; background:none; border-radius:0;
     color:#ffffff; font-weight:700; font-size:15px; line-height:1.3; text-align:left;
@@ -412,11 +430,11 @@
   .social-info .bar.label-text{ background:none; }
 
   .social-info .bar.title.label-text{
-    font-family:'Anton',sans-serif;
-    font-weight:400;
-    font-size:19px;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
+    font-family:'Rajdhani',sans-serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.02em;
+    text-transform:none;
     color:#ffffff;
   }
   .social-info .bar.sub.label-text,
@@ -430,10 +448,22 @@
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+    font-size:12px;
+    color:rgba(255,255,255,0.55);
   }
   .social-info .bar.tag.label-text{
-    color:#ffffff;
-    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    width:fit-content;
+    color:#0a1a10;
+    background:#FF3E3E;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:3px 10px;
+    border-radius:999px;
+    margin-top:2px;
   }
 
   /* ================= keyframes ================= */
@@ -516,12 +546,19 @@
 
     <div class="frame">
 
+      <div class="bg-type" aria-hidden="true">DEKMASHSHOP</div>
 
       <div class="content">
 
         <div class="visual-wrap">
           <div class="visual-glow"></div>
-          <div class="visual-placeholder"></div>
+          <div class="visual-inner">
+            <div class="visual-placeholder"></div>
+            <svg class="visual-crystal" viewBox="0 0 24 32" fill="none" aria-hidden="true">
+              <path d="M12 2 L18 12 L12 30 L6 12 Z" fill="#FF3E3E"/>
+              <path d="M12 2 L18 12 L12 16 L6 12 Z" fill="#FFC3C3"/>
+            </svg>
+          </div>
         </div>
 
         <div class="title-placeholder"><span class="txt">DEKMASHSHOP</span></div>
@@ -662,7 +699,7 @@
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0a0304, 0.05);
+    scene.fog = new THREE.FogExp2(0x0A0304, 0.05);
 
     let { w: sw, h: sh } = stageSize();
     const camera = new THREE.PerspectiveCamera(50, sw/sh, 0.1, 100);
@@ -732,12 +769,12 @@
         const slice = trunkPts.slice(startIdx, endIdx+1);
         if(slice.length < 2) continue;
         const glowGeo = tubeFromPoints(slice, glowRadii[s], 6);
-        const glowMat = new THREE.MeshBasicMaterial({ color:0xff3b2c, transparent:true, opacity:0.42, blending:THREE.AdditiveBlending, depthWrite:false });
+        const glowMat = new THREE.MeshBasicMaterial({ color:0xFF3B2C, transparent:true, opacity:0.42, blending:THREE.AdditiveBlending, depthWrite:false });
         const glowMesh = new THREE.Mesh(glowGeo, glowMat);
         group.add(glowMesh); meshes.push({mesh:glowMesh, base:0.42});
 
         const coreGeo = tubeFromPoints(slice, radii[s], 6);
-        const coreMat = new THREE.MeshBasicMaterial({ color:0xfff2e6, transparent:true, opacity:1, blending:THREE.AdditiveBlending, depthWrite:false });
+        const coreMat = new THREE.MeshBasicMaterial({ color:0xFFF2E6, transparent:true, opacity:1, blending:THREE.AdditiveBlending, depthWrite:false });
         const coreMesh = new THREE.Mesh(coreGeo, coreMat);
         group.add(coreMesh); meshes.push({mesh:coreMesh, base:1});
       }
@@ -759,12 +796,12 @@
         const bPts = displaceBolt3D(bStart, bEnd, 3, 0.5);
 
         const glowGeo = tubeFromPoints(bPts, 0.05, 5);
-        const glowMat = new THREE.MeshBasicMaterial({ color:0xff5a45, transparent:true, opacity:0.34, blending:THREE.AdditiveBlending, depthWrite:false });
+        const glowMat = new THREE.MeshBasicMaterial({ color:0xFF5A45, transparent:true, opacity:0.34, blending:THREE.AdditiveBlending, depthWrite:false });
         const glowMesh = new THREE.Mesh(glowGeo, glowMat);
         group.add(glowMesh); meshes.push({mesh:glowMesh, base:0.34});
 
         const coreGeo = tubeFromPoints(bPts, 0.015, 5);
-        const coreMat = new THREE.MeshBasicMaterial({ color:0xffe8de, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false });
+        const coreMat = new THREE.MeshBasicMaterial({ color:0xFFE8DE, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false });
         const coreMesh = new THREE.Mesh(coreGeo, coreMat);
         group.add(coreMesh); meshes.push({mesh:coreMesh, base:0.85});
 
@@ -781,7 +818,7 @@
           const tEnd = tStart.clone().add(tDir.clone().multiplyScalar(tLen*0.4)).add(tPerp.multiplyScalar(tLen*0.9));
           const tPts = displaceBolt3D(tStart, tEnd, 2, 0.22);
           const tGeo = tubeFromPoints(tPts, 0.008, 4);
-          const tMat = new THREE.MeshBasicMaterial({ color:0xffd9cc, transparent:true, opacity:0.4, blending:THREE.AdditiveBlending, depthWrite:false });
+          const tMat = new THREE.MeshBasicMaterial({ color:0xFFD9CC, transparent:true, opacity:0.4, blending:THREE.AdditiveBlending, depthWrite:false });
           const tMesh = new THREE.Mesh(tGeo, tMat);
           group.add(tMesh); meshes.push({mesh:tMesh, base:0.4});
         }
@@ -805,7 +842,7 @@
     const NUM_LIGHTS = 4;
     const lights = [];
     for(let i=0;i<NUM_LIGHTS;i++){
-      const l = new THREE.PointLight(0xff8a6a, 0, 14, 2);
+      const l = new THREE.PointLight(0xFF8A6A, 0, 14, 2);
       scene.add(l);
       lights.push(l);
     }
