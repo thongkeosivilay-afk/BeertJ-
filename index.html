@@ -608,13 +608,17 @@
     z-index:0;
   }
   .card-bg-video{
-    position:absolute; inset:0;
-    width:100%; height:100%;
+    position:absolute;
+    top:0; right:0; bottom:0;
+    left:50%;
+    width:50%; height:100%;
     object-fit:cover;
-    border-radius:22px;
+    border-radius:0 22px 22px 0;
     z-index:0;
     pointer-events:none;
     filter:blur(1.5px) saturate(0.9);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.7) 35%, #000 60%);
+    mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.7) 35%, #000 60%);
   }
   .card-bg-overlay{
     position:absolute; inset:0;
@@ -786,7 +790,6 @@
   .title-placeholder::after,
   .card-spot,
   .card-sheen,
-  .card-bg-video,
   .card-bg-overlay{
     display:none !important;
   }
@@ -822,7 +825,7 @@
     display:none !important;
   }
 
-  /* ================= peek-from-edge cards: logo leads, card body follows ================= */
+  /* ================= card: always fully open, no slide/peek ================= */
   .social-card{
     display:block;
     min-height:96px;
@@ -835,11 +838,6 @@
     box-shadow:none !important;
     backdrop-filter:none !important;
     -webkit-backdrop-filter:none !important;
-    pointer-events:none;
-  }
-  .social-card .card-body,
-  .social-card .social-avatar{
-    pointer-events:auto;
   }
   .social-card .card-body{
     position:absolute;
@@ -856,33 +854,18 @@
       inset 1px 1px 0 rgba(255,70,55,0.07),
       inset -1px -1px 0 rgba(0,0,0,0.45),
       inset 0 1px 0 rgba(255,0,24,0.05);
-    transform:translateX(0);
-    transition:transform 0.5s cubic-bezier(.16,1,.3,1);
-    transition-delay:0.09s;
     z-index:1;
-    will-change:transform;
-  }
-  .social-card.collapsed .card-body{
-    transform:translateX(calc(100% - 34px));
   }
   .social-card .social-avatar{
     position:absolute !important;
     left:18px;
     top:50%;
     transform:translateY(-50%);
-    transition:left 0.36s cubic-bezier(.16,1,.3,1);
     z-index:2;
-  }
-  .social-card.collapsed .social-avatar{
-    left:calc(100% - 60px);
   }
   .social-card .card-link{
     text-decoration:none;
     cursor:pointer;
-    pointer-events:none;
-  }
-  .social-card.ready .card-link{
-    pointer-events:auto;
   }
 
   /* ================= shop name — clean display font ================= */
@@ -966,7 +949,7 @@
           <span class="txt">ຮ້ານຂາຍໂປຮອັນດັບ 1 ໃນລາວ</span>
         </div>
 
-        <div class="social-card collapsed">
+        <div class="social-card">
           <video class="card-bg-video" src="assets/card-bg-1.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
           <div class="social-avatar" style="background-image:url('assets/store-logo.jpg');background-size:cover;background-position:center;"></div>
           <div class="card-body">
@@ -981,7 +964,7 @@
           </div>
         </div>
 
-        <div class="social-card collapsed card-2">
+        <div class="social-card card-2">
           <video class="card-bg-video" src="assets/card-bg-2.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
           <div class="social-avatar" style="background-image:url('assets/tiktok-icon.jpeg');background-size:cover;background-position:center;"></div>
           <div class="card-body">
@@ -996,7 +979,7 @@
           </div>
         </div>
 
-        <div class="social-card collapsed card-3">
+        <div class="social-card card-3">
           <video class="card-bg-video" src="assets/card-bg-3.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
           <div class="social-avatar" style="background-image:url('assets/discord-icon.jpeg');background-size:cover;background-position:center;"></div>
           <div class="card-body">
@@ -1039,48 +1022,6 @@
         setTimeout(function(){ triggerBgStrike(); scheduleBgStrike(); }, delay);
       }
       scheduleBgStrike();
-    })();
-
-    // Peek-from-edge cards: tap to slide in, tap again to slide back
-    (function(){
-      document.querySelectorAll('.social-card').forEach(function(card){
-        var body = card.querySelector('.card-body');
-        var link = card.querySelector('.card-link');
-
-        if (body) {
-          body.addEventListener('transitionend', function(e){
-            if (e.propertyName !== 'transform') return;
-            if (!card.classList.contains('collapsed')) {
-              card.classList.add('ready'); // slide-in finished — link becomes tappable
-            }
-          });
-        }
-
-        card.addEventListener('click', function(e){
-          if (e.target.closest('.card-link')) return; // real <a> tap — handled below
-
-          if (card.classList.contains('collapsed')) {
-            // 1st tap: just slide the card open
-            card.classList.toggle('collapsed');
-            card.classList.remove('ready');
-          } else if (card.classList.contains('ready')) {
-            // 2nd tap anywhere on the open card: go to its link
-            if (link && link.href) {
-              window.open(link.href, '_blank', 'noopener');
-            }
-            card.classList.add('collapsed');
-            card.classList.remove('ready');
-          }
-        });
-
-        if (link) {
-          link.addEventListener('click', function(){
-            // if the <a> itself is tapped directly, let it navigate, then slide this card back closed
-            card.classList.add('collapsed');
-            card.classList.remove('ready');
-          });
-        }
-      });
     })();
 
     // Pointer-tracking spotlight + press ripple/light-pulse (desktop hover only for spotlight)
