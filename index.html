@@ -608,17 +608,20 @@
     z-index:0;
   }
   .card-bg-video{
-    position:absolute;
-    top:0; right:0; bottom:0;
-    left:50%;
-    width:50%; height:100%;
+    position:absolute; inset:0;
+    width:100%; height:100%;
     object-fit:cover;
     border-radius:0 22px 22px 0;
     z-index:0;
     pointer-events:none;
     filter:blur(1.5px) saturate(0.9);
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.7) 35%, #000 60%);
-    mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.7) 35%, #000 60%);
+    clip-path:polygon(62% 0%, 74% 6%, 54% 13%, 71% 22%, 49% 32%, 69% 43%, 51% 55%, 73% 66%, 55% 77%, 68% 88%, 58% 100%, 100% 100%, 100% 0%);
+  }
+  .social-card.card-2 .card-bg-video{
+    clip-path:polygon(48% 0%, 61% 9%, 41% 19%, 59% 31%, 39% 43%, 57% 55%, 37% 67%, 55% 79%, 43% 91%, 50% 100%, 100% 100%, 100% 0%);
+  }
+  .social-card.card-3 .card-bg-video{
+    clip-path:polygon(55% 0%, 44% 11%, 64% 23%, 46% 36%, 62% 49%, 47% 61%, 66% 73%, 50% 86%, 59% 100%, 100% 100%, 100% 0%);
   }
   .card-bg-overlay{
     position:absolute; inset:0;
@@ -1022,6 +1025,18 @@
         setTimeout(function(){ triggerBgStrike(); scheduleBgStrike(); }, delay);
       }
       scheduleBgStrike();
+    })();
+
+    // Whole card is tappable — clicking anywhere on it opens its link
+    (function(){
+      document.querySelectorAll('.social-card').forEach(function(card){
+        var link = card.querySelector('.card-link');
+        if (!link || !link.href) return;
+        card.addEventListener('click', function(e){
+          if (e.target.closest('.card-link')) return; // let the real <a> handle its own tap
+          window.open(link.href, '_blank', 'noopener');
+        });
+      });
     })();
 
     // Pointer-tracking spotlight + press ripple/light-pulse (desktop hover only for spotlight)
