@@ -6,7 +6,7 @@
 <title>DEKMASHSHOP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Anton&family=Poppins:wght@400;500;600&family=Noto+Sans+Lao:wght@700;900&family=Noto+Looped+Lao:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Anton&family=Poppins:wght@400;500;600;700&family=Noto+Sans+Lao:wght@400;500;700;900&family=Noto+Looped+Lao:wght@400;500;700;800;900&family=Russo+One&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   :root{
     --void:#080001;
@@ -376,7 +376,7 @@
   .title-placeholder .txt{
     position:relative;
     display:inline-block;
-    background: linear-gradient(180deg, #ffffff, #FF0018 60%, #FF0018);
+    background: linear-gradient(180deg, #ffffff, #ffffff 60%, #ffffff);
     -webkit-background-clip:text;
     background-clip:text;
     filter:drop-shadow(0 0 10px rgba(255,0,24,0.5)) drop-shadow(0 0 26px rgba(255,0,24,0.35));
@@ -448,8 +448,8 @@
   }
   .chip .ic{width:13px;height:13px;border-radius:4px;background:rgba(255,0,24,0.3);flex:0 0 auto;}
   .chip .ic svg{width:100%;height:100%;stroke:#FF0018;fill:none;stroke-width:2;}
-  .chip .label{font-size:11px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
-  .chip .value{font-family:'Anton',sans-serif;font-size:13px;font-weight:400;color:var(--ink);letter-spacing:0.03em;}
+  .chip .label{font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.06em;}
+  .chip .value{font-family:'Anton',sans-serif;font-size:13px;font-weight:400;color:#ffffff;letter-spacing:0.03em;}
   .chip .bar{height:9px;border-radius:4px;background:var(--skel);}
   .chip .bar.w1{width:50px;}
   .chip .bar.w2{width:34px;}
@@ -492,10 +492,10 @@
   }
   .notice .txt{
     font-family:'Noto Looped Lao','Noto Sans Lao','Poppins',-apple-system,sans-serif;
-    font-weight:900;
-    font-size:18px;
+    font-weight:500;
+    font-size:14px;
     letter-spacing:0.02em;
-    background:linear-gradient(180deg,#FF0018 0%,#FF0018 45%,#FF0018 100%);
+    background:linear-gradient(180deg,#ffffff 0%,#ffffff 45%,#ffffff 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
@@ -820,6 +820,81 @@
   .bg-type-stage{
     display:none !important;
   }
+
+  /* ================= peek-from-edge cards: logo leads, card body follows ================= */
+  .social-card{
+    display:block;
+    min-height:96px;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    background:transparent !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    box-shadow:none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    pointer-events:none;
+  }
+  .social-card .card-body,
+  .social-card .social-avatar{
+    pointer-events:auto;
+  }
+  .social-card .card-body{
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    background:linear-gradient(155deg, #150002 0%, #0F0002 55%, #0A0001 100%);
+    border:1px solid rgba(255,0,24,0.12);
+    padding:16px 18px 16px 92px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    box-shadow:
+      0 20px 40px -20px rgba(0,0,0,0.7),
+      inset 1px 1px 0 rgba(255,70,55,0.07),
+      inset -1px -1px 0 rgba(0,0,0,0.45),
+      inset 0 1px 0 rgba(255,0,24,0.05);
+    transform:translateX(0);
+    transition:transform 0.5s cubic-bezier(.16,1,.3,1);
+    transition-delay:0.09s;
+    z-index:1;
+    will-change:transform;
+  }
+  .social-card.collapsed .card-body{
+    transform:translateX(calc(100% - 34px));
+  }
+  .social-card .social-avatar{
+    position:absolute !important;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    transition:left 0.36s cubic-bezier(.16,1,.3,1);
+    z-index:2;
+  }
+  .social-card.collapsed .social-avatar{
+    left:calc(100% - 60px);
+  }
+  .social-card .card-link{
+    text-decoration:none;
+    cursor:pointer;
+    pointer-events:none;
+  }
+  .social-card.ready .card-link{
+    pointer-events:auto;
+  }
+
+  /* ================= shop name — clean display font ================= */
+  .title-placeholder{
+    font-family:'Russo One','Rajdhani',sans-serif;
+    font-weight:400;
+    font-size:clamp(16px,5.6vw,22px);
+    letter-spacing:0.03em;
+    line-height:1.4;
+  }
+  .title-placeholder .txt{
+    animation:none;
+  }
 </style>
 </head>
 <body>
@@ -887,47 +962,53 @@
         <div class="desc"></div>
 
         <div class="notice">
-          <span class="txt">ຮ້ານຂາຍໂປອັນດັບ 1 ໃນລາວ</span>
+          <span class="txt">ຮ້ານຂາຍໂປຮອັນດັບ 1 ໃນລາວ</span>
         </div>
 
-        <a class="social-card" href="https://dekmashshop.tfgdhggg.workers.dev/#categories" target="_blank" rel="noopener">
+        <div class="social-card collapsed">
           <video class="card-bg-video" src="assets/card-bg-1.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
-          <div class="card-bg-overlay"></div>
-          <span class="card-spot" aria-hidden="true"></span>
-          <span class="card-sheen" aria-hidden="true"></span>
           <div class="social-avatar" style="background-image:url('assets/store-logo.jpg');background-size:cover;background-position:center;"></div>
-          <div class="social-info">
-            <div class="bar title label-text">Categories</div>
-            <div class="bar sub label-text small">dekmashshop.tfgdhggg.workers.dev</div>
-            <div class="bar tag label-text small">Shop Now</div>
+          <div class="card-body">
+            <div class="card-bg-overlay"></div>
+            <span class="card-spot" aria-hidden="true"></span>
+            <span class="card-sheen" aria-hidden="true"></span>
+            <div class="social-info">
+              <div class="bar title label-text">Categories</div>
+              <div class="bar sub label-text small">dekmashshop.tfgdhggg.workers.dev</div>
+              <a class="bar tag label-text small card-link" href="https://dekmashshop.tfgdhggg.workers.dev/#categories" target="_blank" rel="noopener">Shop Now</a>
+            </div>
           </div>
-        </a>
+        </div>
 
-        <a class="social-card card-2" href="https://vt.tiktok.com/ZSVYe42Lv/" target="_blank" rel="noopener">
+        <div class="social-card collapsed card-2">
           <video class="card-bg-video" src="assets/card-bg-2.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
-          <div class="card-bg-overlay"></div>
-          <span class="card-spot" aria-hidden="true"></span>
-          <span class="card-sheen" aria-hidden="true"></span>
           <div class="social-avatar" style="background-image:url('assets/tiktok-icon.jpeg');background-size:cover;background-position:center;"></div>
-          <div class="social-info">
-            <div class="bar title label-text">TikTok</div>
-            <div class="bar sub label-text small">@dekmashshop</div>
-            <div class="bar tag label-text small">Watch Now</div>
+          <div class="card-body">
+            <div class="card-bg-overlay"></div>
+            <span class="card-spot" aria-hidden="true"></span>
+            <span class="card-sheen" aria-hidden="true"></span>
+            <div class="social-info">
+              <div class="bar title label-text">TikTok</div>
+              <div class="bar sub label-text small">@dekmashshop</div>
+              <a class="bar tag label-text small card-link" href="https://vt.tiktok.com/ZSVYe42Lv/" target="_blank" rel="noopener">Watch Now</a>
+            </div>
           </div>
-        </a>
+        </div>
 
-        <a class="social-card card-3" href="https://discord.gg/CM9V9UZJD" target="_blank" rel="noopener">
+        <div class="social-card collapsed card-3">
           <video class="card-bg-video" src="assets/card-bg-3.mp4" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
-          <div class="card-bg-overlay"></div>
-          <span class="card-spot" aria-hidden="true"></span>
-          <span class="card-sheen" aria-hidden="true"></span>
           <div class="social-avatar" style="background-image:url('assets/discord-icon.jpeg');background-size:cover;background-position:center;"></div>
-          <div class="social-info">
-            <div class="bar title label-text">Discord</div>
-            <div class="bar sub label-text small">Join our server</div>
-            <div class="bar tag label-text small">Join Now</div>
+          <div class="card-body">
+            <div class="card-bg-overlay"></div>
+            <span class="card-spot" aria-hidden="true"></span>
+            <span class="card-sheen" aria-hidden="true"></span>
+            <div class="social-info">
+              <div class="bar title label-text">Discord</div>
+              <div class="bar sub label-text small">Join our server</div>
+              <a class="bar tag label-text small card-link" href="https://discord.gg/CM9V9UZJD" target="_blank" rel="noopener">Join Now</a>
+            </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="home-bar"></div>
@@ -957,6 +1038,37 @@
         setTimeout(function(){ triggerBgStrike(); scheduleBgStrike(); }, delay);
       }
       scheduleBgStrike();
+    })();
+
+    // Peek-from-edge cards: tap to slide in, tap again to slide back
+    (function(){
+      document.querySelectorAll('.social-card').forEach(function(card){
+        var body = card.querySelector('.card-body');
+        var link = card.querySelector('.card-link');
+
+        if (body) {
+          body.addEventListener('transitionend', function(e){
+            if (e.propertyName !== 'transform') return;
+            if (!card.classList.contains('collapsed')) {
+              card.classList.add('ready'); // slide-in finished — link becomes tappable
+            }
+          });
+        }
+
+        card.addEventListener('click', function(e){
+          if (e.target.closest('.card-link')) return; // handled below
+          card.classList.toggle('collapsed');
+          card.classList.remove('ready'); // not tappable again until it fully re-opens
+        });
+
+        if (link) {
+          link.addEventListener('click', function(){
+            // let the link navigate (opens in a new tab), then slide this card back closed
+            card.classList.add('collapsed');
+            card.classList.remove('ready');
+          });
+        }
+      });
     })();
 
     // Pointer-tracking spotlight + press ripple/light-pulse (desktop hover only for spotlight)
